@@ -5,595 +5,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Felis Code | Official Site</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap");
-      :root {
-        --bg-dark: #0f172a;
-        --bg-light: #ffffff;
-        --accent: #3b82f6;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        transition:
-          background-color 0.4s,
-          color 0.4s;
-        margin: 0;
-      }
-      .mono {
-        font-family: "JetBrains Mono", monospace;
-      }
-      .dark-theme {
-        background-color: var(--bg-dark);
-        color: #cbd5e1;
-      }
-      .light-theme {
-        background-color: var(--bg-light);
-        color: #334155;
-      }
-      .light-theme .text-main {
-        color: #1e293b;
-      }
-      .dark-theme .text-main {
-        color: #f8fafc;
-      }
-      .light-theme .text-sub {
-        color: #64748b;
-      }
-      .dark-theme .text-sub {
-        color: #94a3b8;
-      }
-      .sticky-nav {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        transition: all 0.3s;
-      }
-      .dark-theme .sticky-nav {
-        background-color: rgba(15, 23, 42, 0.8);
-        border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-      }
-      .light-theme .sticky-nav {
-        background-color: rgba(255, 255, 255, 0.8);
-        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      }
-      .hover-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid transparent;
-      }
-      .dark-theme .hover-card {
-        background-color: rgba(30, 41, 59, 0.4);
-        border-color: rgba(51, 65, 85, 0.5);
-      }
-      .light-theme .hover-card {
-        background-color: #f1f5f9;
-        border-color: #e2e8f0;
-      }
-      .hover-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent);
-      }
-      @keyframes codeScroll {
-        0% {
-          transform: translateY(0);
-        }
-        100% {
-          transform: translateY(-50%);
-        }
-      }
-      .code-animate {
-        animation: codeScroll 20s linear infinite;
-      }
-      .theme-toggle-btn {
-        background: var(--accent);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 9999px;
-        box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
-        cursor: pointer;
-        border: none;
-      }
-      #backToTop {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s;
-        z-index: 100;
-        border: none;
-        cursor: pointer;
-      }
-      #backToTop.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      #mobile-menu {
-        display: none;
-      }
-      #mobile-menu.open {
-        display: flex;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body id="body" class="light-theme min-h-screen flex flex-col">
+
+    <!-- ══════════════════ NAV ══════════════════ -->
     <nav class="sticky-nav">
-      <div
-        class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <div
-          class="font-bold tracking-tighter text-xl text-blue-600 cursor-pointer"
-          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        >
-          Felis Code
+      <div class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="flex-shrink-0">
+          <img src="logo.svg" alt="Felis Code" class="logo-badge h-11" />
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-bold opacity-80">
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#contact"  class="nav-link">Contact</a>
+          <a href="#about"    class="nav-link">About</a>
         </div>
-        <div
-          class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-bold opacity-80"
-        >
-          <a href="#projects" class="hover:text-blue-500 transition-colors"
-            >Projects</a
-          >
-          <a href="#services" class="hover:text-blue-500 transition-colors"
-            >Services</a
-          >
-          <a href="#contact" class="hover:text-blue-500 transition-colors"
-            >Contact</a
-          >
-          <a href="#about" class="hover:text-blue-500 transition-colors"
-            >About</a
-          >
-        </div>
-        <button
-          onclick="toggleTheme()"
-          class="theme-toggle-btn text-xs font-bold"
-        >
-          <span id="theme-icon">☀️</span>
-          <span id="theme-text">LIGHT MODE</span>
+        <button onclick="toggleTheme()" class="theme-toggle-btn mono">
+          <span id="theme-text">DARK MODE</span>
         </button>
       </div>
     </nav>
 
+    <!-- ══════════════════ MAIN ══════════════════ -->
     <main class="max-w-5xl mx-auto w-full px-6 py-12 flex-grow">
-<header class="mb-24 pt-10">
-    <h1 id="headline" class="text-4xl md:text-6xl font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight">
-        Full-Stack <span class="text-blue-600">Excellence.</span><br>From Kobe to the Cloud.
-    </h1>
-    <p class="text-lg text-sub max-w-2xl leading-relaxed">
-        神戸から、あなたの「作りたい」を技術で支える。<br class="hidden md:block">
-        大規模な開発会社にはない<span class="font-bold text-blue-500">柔軟さ</span>と、一人のエンジニアとして最後までやり遂げる<span class="font-bold text-blue-500">誠実さ</span>を大切にしています。
-    </p>
-</header>
 
-      <section id="projects" class="mb-24 scroll-mt-24">
-        <h2
-          class="text-xs font-bold mb-8 uppercase tracking-[0.2em] text-blue-600"
-        >
-          Flagship Projects
+      <!-- ── HERO ── -->
+      <header class="mb-28 pt-10">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+
+          <!-- Text -->
+          <div class="flex-1 order-2 md:order-1">
+            <h1 id="headline" class="text-4xl md:text-[3.4rem] font-bold text-main mb-8 leading-[1.12] tracking-tight">
+              Full-Stack <span class="text-brand">Studio.</span><br />
+              神戸から、あなたの<br class="md:hidden" /><span class="text-brand">「作りたい」</span>を。
+            </h1>
+            <p class="text-lg text-sub max-w-xl leading-relaxed">
+              神戸を拠点とする個人エンジニア
+              <span class="font-bold text-main">魯 萍 (Lu Ping)</span> が、<br class="hidden md:block" />
+              Web制作からSaaS開発・バックエンド構築まで、<br class="hidden md:block" />
+              <span class="font-bold text-brand">フルリモート</span>で柔軟かつ誠実にご対応します。
+            </p>
+          </div>
+
+          <!-- Logo -->
+          <div class="flex-shrink-0 order-1 md:order-2">
+            <img src="logo.svg" alt="Felis Code Logo" class="logo-badge w-44 md:w-60" />
+          </div>
+
+        </div>
+      </header>
+
+      <!-- ── PROJECTS ── -->
+      <section id="projects" class="mb-20 scroll-mt-24">
+        <h2 class="text-xs font-bold mb-8 uppercase tracking-[0.2em] text-brand">
+          Projects &amp; Services
         </h2>
         <div class="grid grid-cols-1 gap-8">
-          <div class="hover-card p-8 md:p-10 rounded-2xl">
-            <div
-              class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
-            >
-              <h3 class="text-2xl md:text-3xl font-bold text-main">
-                Full-Stack Engineering
-              </h3>
-              <span
-                class="text-[10px] font-bold mono border border-blue-500/50 text-blue-500 px-3 py-1 rounded-full uppercase"
-                >Core Capabilities</span
-              >
+
+          <!-- Card: Web制作 -->
+          <div class="hover-card p-8 md:p-10 rounded-2xl" data-animate data-delay="0s">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-main">Web制作</h3>
+              <span class="tag-badge">Web / Frontend</span>
             </div>
 
-            <div
-              class="w-full h-80 rounded-xl bg-[#0f172a] mb-8 overflow-hidden relative border border-white/10 shadow-2xl"
-            >
-              <div
-                class="flex gap-1.5 p-4 border-b border-white/5 bg-[#1e293b] relative z-30"
-              >
+            <!-- Animated code window -->
+            <div class="w-full h-72 rounded-xl bg-[#1a1c1d] mb-8 overflow-hidden relative border border-white/10 shadow-2xl">
+              <div class="flex gap-1.5 p-4 border-b border-white/5 bg-[#373839]/70 relative z-30">
                 <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
-                <span
-                  class="ml-4 text-[10px] text-slate-500 font-mono tracking-widest uppercase"
-                  >studio_core_logic.py</span
-                >
+                <span class="ml-4 text-[10px] text-slate-500 font-mono tracking-widest uppercase">felis_web_stack.vue</span>
               </div>
+              <div class="absolute top-12 left-0 w-full h-8 bg-gradient-to-b from-[#1a1c1d] to-transparent z-20 pointer-events-none"></div>
+              <div class="code-animate absolute top-16 left-0 w-full px-8 text-left font-mono text-[11px] md:text-xs leading-relaxed z-10">
+                <div class="whitespace-pre text-slate-300">
+<span class="text-[#45b059]">&lt;!-- Vue 3 Composition API --&gt;</span>
+<span class="text-pink-400">&lt;script setup&gt;</span>
+<span class="text-pink-400">import</span> { ref, onMounted } <span class="text-pink-400">from</span> <span class="text-orange-300">'vue'</span>
+<span class="text-pink-400">const</span> data = <span class="text-[#45b059]">ref</span>([])
+<span class="text-pink-400">const</span> <span class="text-yellow-300">load</span> = <span class="text-pink-400">async</span> () =&gt; {
+  <span class="text-pink-400">const</span> res = <span class="text-pink-400">await</span> <span class="text-[#45b059]">fetch</span>(<span class="text-orange-300">'/api/v1/staff'</span>)
+  data.value = <span class="text-pink-400">await</span> res.<span class="text-yellow-300">json</span>()
+}
+<span class="text-[#45b059]">onMounted</span>(load)
+<span class="text-pink-400">&lt;/script&gt;</span>
 
-              <div
-                class="absolute top-12 left-0 w-full h-8 bg-gradient-to-b from-[#0f172a] to-transparent z-20 pointer-events-none"
-              ></div>
+<span class="text-[#45b059]"># --- FastAPI Backend ---</span>
+<span class="text-pink-400">@router</span>.<span class="text-yellow-300">get</span>(<span class="text-orange-300">"/api/v1/staff"</span>)
+<span class="text-pink-400">async def</span> <span class="text-yellow-300">get_staff</span>(db: <span class="text-blue-300">Session</span> = <span class="text-yellow-300">Depends</span>(get_db)):
+    <span class="text-slate-500">"""PostgreSQL から配置データを取得"""</span>
+    <span class="text-pink-400">return</span> db.<span class="text-yellow-300">query</span>(Staff).<span class="text-yellow-300">all</span>()
 
-              <div
-                class="code-animate absolute top-16 left-0 w-full px-10 text-left font-mono text-[11px] md:text-xs leading-relaxed z-10"
-              >
-                <div class="whitespace-pre">
-                  <span class="text-blue-400"
-                    ># --- Enterprise AI Architecture ---</span
-                  >
-                  <span class="text-pink-400">async def</span>
-                  <span class="text-yellow-300">process_request</span>(data:
-                  <span class="text-blue-300">Payload</span>):
-                  <span class="text-slate-500"
-                    >"""高性能な非同期処理とAI推論の統合"""</span
-                  >
-                  worker =
-                  <span class="text-blue-300">AIWorker</span>(model=<span
-                    class="text-orange-300"
-                    >"kobe-v3-pro"</span
-                  >) result =
-                  <span class="text-pink-400">await</span> worker.<span
-                    class="text-yellow-300"
-                    >analyze</span
-                  >(data) <span class="text-pink-400">return</span> {
-                  <span class="text-orange-300">"status"</span>:
-                  <span class="text-orange-300">"200"</span>,
-                  <span class="text-orange-300">"res"</span>: result }
+<span class="text-[#45b059]"># --- AWS ap-northeast-1 ---</span>
+<span class="text-yellow-300">provider</span>: aws
+  <span class="text-yellow-300">region</span>: ap-northeast-1
+  <span class="text-yellow-300">stage</span>: production
+<span class="text-yellow-300">functions</span>:
+  <span class="text-yellow-300">api</span>:
+    <span class="text-yellow-300">handler</span>: <span class="text-orange-300">core.main</span>
+    <span class="text-yellow-300">events</span>:
+      - <span class="text-yellow-300">httpApi</span>: <span class="text-orange-300">ANY /api/{proxy+}</span>
 
-                  <span class="text-blue-400"
-                    >// --- Reactive Frontend Logic ---</span
-                  >
-                  <span class="text-pink-400">export const</span>
-                  <span class="text-yellow-300">useGlobalStore</span> = () => {
-                  <span class="text-pink-400">const</span> state =
-                  <span class="text-blue-300">reactive</span>({ loading:
-                  <span class="text-pink-400">false</span> })
-                  <span class="text-pink-400">const</span>
-                  <span class="text-yellow-300">sync</span> =
-                  <span class="text-pink-400">async</span> () => { state.loading
-                  = <span class="text-pink-400">true</span>
-                  <span class="text-pink-400">await</span>
-                  <span class="text-blue-300">fetch</span>(<span
-                    class="text-orange-300"
-                    >'/api/v1/sync'</span
-                  >) state.loading = <span class="text-pink-400">false</span>
-                  }
-                  <span class="text-pink-400">return</span> { state, sync } }
-
-                  <span class="text-blue-400"># --- Edge Deployment ---</span>
-                  <span class="text-yellow-300">deployment</span>:
-                  <span class="text-yellow-300">strategy</span>:
-                  <span class="text-orange-300">RollingUpdate</span>
-                  <span class="text-yellow-300">nodes</span>: [<span
-                    class="text-orange-300"
-                    >"Kobe-01"</span
-                  >, <span class="text-orange-300">"Tokyo-02"</span>]
-
-                  <span class="text-blue-400"
-                    ># --- Loop Start (无缝滚动重复) ---</span
-                  >
-                  <span class="text-blue-400"
-                    ># --- Enterprise AI Architecture ---</span
-                  >
-                  <span class="text-pink-400">async def</span>
-                  <span class="text-yellow-300">process_request</span>(data:
-                  <span class="text-blue-300">Payload</span>):
-                  <span class="text-slate-500"
-                    >"""高性能な非同期処理とAI推論の統合"""</span
-                  >
-                  worker =
-                  <span class="text-blue-300">AIWorker</span>(model=<span
-                    class="text-orange-300"
-                    >"kobe-v3-pro"</span
-                  >) result =
-                  <span class="text-pink-400">await</span> worker.<span
-                    class="text-yellow-300"
-                    >analyze</span
-                  >(data) <span class="text-pink-400">return</span> {
-                  <span class="text-orange-300">"status"</span>:
-                  <span class="text-orange-300">"200"</span>,
-                  <span class="text-orange-300">"res"</span>: result }
+<span class="text-[#45b059]">&lt;!-- Loop --&gt;</span>
+<span class="text-pink-400">&lt;script setup&gt;</span>
+<span class="text-pink-400">import</span> { ref, onMounted } <span class="text-pink-400">from</span> <span class="text-orange-300">'vue'</span>
+<span class="text-pink-400">const</span> data = <span class="text-[#45b059]">ref</span>([])
                 </div>
               </div>
+              <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#1a1c1d] to-transparent z-20 pointer-events-none"></div>
+            </div>
 
-              <div
-                class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#0f172a] to-transparent z-20 pointer-events-none"
-              ></div>
-            </div>
             <p class="text-sub leading-relaxed">
-              単にコードを書くだけではありません。見た目の美しさから、裏側の仕組み（サーバー・安定性）まで、まるごと一社で完結。将来の拡張もスムーズに行える、長く愛されるシステムを構築します。
+              神戸市内の小規模事業者向けWebサイト制作。Vue.js と Tailwind CSS によるモダンな技術選定と、長期保守まで一貫してご対応。大企業にはない柔軟さで、素早く・確実に形にします。
             </p>
           </div>
-          <div class="hover-card p-8 md:p-10 rounded-2xl">
-            <div
-              class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
-            >
-              <h3 class="text-2xl md:text-3xl font-bold text-main">
-                Nursery Staff Scheduler
-              </h3>
-              <span
-                class="text-[10px] font-bold mono border border-blue-500/50 text-blue-500 px-3 py-1 rounded-full uppercase"
-                >SaaS / Optimization</span
-              >
+
+          <!-- Card: SaaS保育園 -->
+          <div class="hover-card p-8 md:p-10 rounded-2xl" data-animate data-delay="0.1s">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-main">Nursery Staff Scheduler</h3>
+              <span class="tag-badge">SaaS / 2026 Q3</span>
             </div>
-            <div
-              class="w-full aspect-video rounded-xl bg-slate-900 mb-8 border border-white/5 overflow-hidden"
-            >
-              <img
-                src="demo.gif"
-                alt="System Animation"
-                class="w-full h-full object-cover opacity-80"
-              />
+            <div class="w-full aspect-video rounded-xl bg-[#1a1c1d] mb-8 border border-white/5 overflow-hidden">
+              <img src="demo.gif" alt="System Demo" class="w-full h-full object-cover opacity-80" />
             </div>
             <p class="text-sub leading-relaxed">
-              日本の保育園における配置基準を自動計算し、最適なスタッフ配置をシミュレーション。複雑な法的制約をアルゴリズムで解決します。
+              保育施設向け配置管理・シフト自動化SaaS。日本の配置基準（児童福祉施設の設備及び運営に関する基準）を自動計算し、複雑な法定制約をアルゴリズムで解決。2026年Q3リリース予定。
             </p>
           </div>
+
+          <!-- Card: システム受託 -->
+          <div class="hover-card p-8 md:p-10 rounded-2xl" data-animate data-delay="0.2s">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-main">システム受託開発</h3>
+              <span class="tag-badge">Backend / Python</span>
+            </div>
+
+            <!-- Static FastAPI code block -->
+            <div class="w-full rounded-xl bg-[#1a1c1d] mb-8 border border-white/10 shadow-2xl overflow-hidden">
+              <div class="flex gap-1.5 p-4 border-b border-white/5 bg-[#373839]/70">
+                <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                <span class="ml-4 text-[10px] text-slate-500 font-mono tracking-widest uppercase">scheduler_core.py</span>
+              </div>
+              <pre class="px-8 py-6 font-mono text-[11px] md:text-xs leading-relaxed overflow-x-auto text-slate-300"><span class="text-[#45b059]">from</span> fastapi <span class="text-[#45b059]">import</span> APIRouter, Depends
+<span class="text-[#45b059]">from</span> sqlalchemy.orm <span class="text-[#45b059]">import</span> Session
+<span class="text-[#45b059]">from</span> .engine <span class="text-[#45b059]">import</span> KobeScheduler, JAPAN_CHILDCARE_LAW
+
+router = APIRouter()
+
+<span class="text-pink-400">@router.post</span>(<span class="text-orange-300">"/api/schedule/optimize"</span>)
+<span class="text-pink-400">async def</span> <span class="text-yellow-300">optimize</span>(payload: <span class="text-blue-300">SchedulePayload</span>, db: <span class="text-blue-300">Session</span> = <span class="text-yellow-300">Depends</span>(get_db)):
+    <span class="text-slate-500">"""保育士配置の最適化エンジン — 法定基準を自動充足"""</span>
+    engine = <span class="text-blue-300">KobeScheduler</span>(rules=JAPAN_CHILDCARE_LAW)
+    result = <span class="text-pink-400">await</span> engine.<span class="text-yellow-300">solve</span>(payload, db)
+    <span class="text-pink-400">return</span> {<span class="text-orange-300">"status"</span>: <span class="text-orange-300">"ok"</span>, <span class="text-orange-300">"schedule"</span>: result}</pre>
+            </div>
+
+            <p class="text-sub leading-relaxed">
+              Python / FastAPI を用いたバックエンド開発。業務効率化ツールの設計・構築から、AWS（ap-northeast-1）での安定運用まで一貫してお任せください。
+            </p>
+          </div>
+
         </div>
       </section>
 
+      <!-- ── TECH STACK STRIP ── -->
+      <div class="mb-24" data-animate data-delay="0s">
+        <p class="text-[10px] font-bold mono uppercase tracking-[0.2em] text-sub mb-5">Tech Stack</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="stack-badge">Vue.js</span>
+          <span class="stack-badge">FastAPI</span>
+          <span class="stack-badge">PostgreSQL</span>
+          <span class="stack-badge">Python</span>
+          <span class="stack-badge">Tailwind CSS</span>
+          <span class="stack-badge">AWS</span>
+        </div>
+      </div>
+
+      <!-- ── SERVICES ── -->
       <section id="services" class="mb-24 scroll-mt-24">
-        <h2
-          class="text-xs font-bold mb-8 uppercase tracking-[0.2em] text-blue-600"
-        >
-          Services
-        </h2>
+        <h2 class="text-xs font-bold mb-8 uppercase tracking-[0.2em] text-brand">Services</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="hover-card p-6 rounded-xl flex flex-col h-full">
-            <div class="text-blue-500 mb-4">
-              <svg
-                class="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+
+          <div class="hover-card p-6 rounded-xl flex flex-col h-full" data-animate data-delay="0s">
+            <div class="text-brand mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </div>
             <h4 class="font-bold text-main mb-2">オーダーメイド開発</h4>
             <p class="text-[13px] text-sub leading-relaxed">
-              「こんなツールが欲しい」を形にします。PCでもスマホでもサクサク動く、あなた専用の業務システムをゼロから構築します。
+              「こんなツールが欲しい」を形にします。Vue.js + FastAPI によるモダンなフルスタック構成で、PC・スマホ双方に対応した専用システムをゼロから構築します。
             </p>
           </div>
 
-          <div class="hover-card p-6 rounded-xl flex flex-col h-full">
-            <div class="text-blue-500 mb-4">
-              <svg
-                class="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0012 18.75c-1.03 0-1.9-.4-2.593-.912l-.547-.547z"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+          <div class="hover-card p-6 rounded-xl flex flex-col h-full" data-animate data-delay="0.1s">
+            <div class="text-brand mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0012 18.75c-1.03 0-1.9-.4-2.593-.912l-.547-.547z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </div>
             <h4 class="font-bold text-main mb-2">ITコンサルティング</h4>
             <p class="text-[13px] text-sub leading-relaxed">
-              難しい専門用語は使いません。今の業務のどこを自動化できるか、どのツールを使えば安く済むか、プロの視点でアドバイスします。
+              難しい専門用語は使いません。業務のどこを自動化できるか、どのツールを使えばコストを抑えられるか、プロの視点で分かりやすくアドバイスします。
             </p>
           </div>
 
-          <div class="hover-card p-6 rounded-xl flex flex-col h-full">
-            <div class="text-blue-500 mb-4">
-              <svg
-                class="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+          <div class="hover-card p-6 rounded-xl flex flex-col h-full" data-animate data-delay="0.2s">
+            <div class="text-brand mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </div>
             <h4 class="font-bold text-main mb-2">SaaS・設計支援</h4>
             <p class="text-[13px] text-sub leading-relaxed">
-              新しいWebサービスを立ち上げたい方へ。使いやすい画面設計（UI/UX）から、成長に合わせて拡張できる裏側の仕組みまで設計します。
+              新しいWebサービスを立ち上げたい方へ。UI/UX設計から拡張可能なバックエンド設計まで。自社開発中の保育園SaaS（2026 Q3予定）の知見を活かします。
             </p>
           </div>
 
-          <div class="hover-card p-6 rounded-xl flex flex-col h-full">
-            <div class="text-blue-500 mb-4">
-              <svg
-                class="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+          <div class="hover-card p-6 rounded-xl flex flex-col h-full" data-animate data-delay="0.3s">
+            <div class="text-brand mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </div>
-            <h4 class="font-bold text-main mb-2">保守・グローバル支援</h4>
+            <h4 class="font-bold text-main mb-2">保守・インフラ支援</h4>
             <p class="text-[13px] text-sub leading-relaxed">
-              作って終わりではありません。サーバーの管理はもちろん、多言語対応や海外展開を視野に入れた技術サポートも提供可能です。
+              作って終わりではありません。AWS（ap-northeast-1）でのサーバー管理・監視から、多言語対応や海外展開を視野に入れた継続サポートまで提供します。
             </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CONTACT ── -->
+      <section id="contact" class="mb-32 scroll-mt-24 relative">
+        <div class="absolute -top-16 -right-16 w-80 h-80 rounded-full blur-[120px] pointer-events-none contact-glow-green"></div>
+        <div class="absolute -bottom-16 -left-16 w-80 h-80 rounded-full blur-[100px] pointer-events-none contact-glow-dark"></div>
+
+        <div class="relative rounded-3xl p-[1px] overflow-hidden shadow-2xl contact-gradient-border">
+          <div class="bg-[#1a1c1d]/96 backdrop-blur-2xl rounded-[23px] p-10 md:p-16 text-center text-white relative overflow-hidden">
+
+            <!-- Dot grid texture -->
+            <div class="absolute inset-0 opacity-[0.018] contact-dot-grid"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto">
+
+              <!-- Pulsing badge -->
+              <div class="inline-flex items-center gap-2 border border-[#45b059]/30 bg-[#45b059]/5 px-4 py-1.5 rounded-full mb-8">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#45b059] opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-[#45b059]"></span>
+                </span>
+                <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#45b059]">LU PING / 魯 萍 &middot; Solo Architect &middot; Kobe, Japan</span>
+              </div>
+
+              <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight tracking-tighter bg-gradient-to-b from-white to-slate-300 bg-clip-text text-transparent">
+                Let's Build Your <span class="text-[#45b059]">Next Idea.</span>
+              </h2>
+
+              <p class="text-base text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed opacity-90">
+                Felis Code は、<span class="text-white font-bold">個人開発者</span>による柔軟なテックスタジオです。<br class="hidden md:block" />
+                企業様はもちろん、<span class="text-white font-bold">「自分専用のツールを作りたい」</span>という個人のご依頼も大歓迎です。
+              </p>
+
+              <!-- Info cards -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 text-left max-w-3xl mx-auto">
+                <div class="bg-[#373839]/40 p-5 rounded-2xl border border-[#373839]/60 hover:border-[#45b059]/50 transition-colors">
+                  <p class="text-[11px] font-mono font-bold uppercase mb-1.5 tracking-wider text-[#45b059]">Client Type</p>
+                  <p class="text-sm text-slate-100">法人・個人を問わず対応</p>
+                </div>
+                <div class="bg-[#373839]/40 p-5 rounded-2xl border border-[#373839]/60 hover:border-[#45b059]/50 transition-colors">
+                  <p class="text-[11px] font-mono font-bold uppercase mb-1.5 tracking-wider text-[#45b059]">Communication</p>
+                  <p class="text-sm text-slate-100">メール・Zoom・Meet 等</p>
+                </div>
+                <div class="bg-[#373839]/40 p-5 rounded-2xl border border-[#373839]/60 hover:border-[#45b059]/50 transition-colors">
+                  <p class="text-[11px] font-mono font-bold uppercase mb-1.5 tracking-wider text-[#45b059]">Work Style</p>
+                  <p class="text-sm text-slate-100">100% リモート・遠隔対応</p>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="flex justify-center">
+                <a href="mailto:info@example.com" class="group relative bg-white text-slate-900 px-12 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-[#45b059]/25 active:scale-95 overflow-hidden">
+                  <div class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-700"></div>
+                  無料で相談する
+                </a>
+              </div>
+
+              <p class="text-[10px] mono text-slate-500 mt-8 uppercase tracking-widest">
+                Direct Expert-to-Client &middot; No Middleman &middot; Full Transparency
+              </p>
+
+            </div>
           </div>
         </div>
       </section>
 
-    <section id="contact" class="mb-32 scroll-mt-24 relative">
-    <div class="absolute -top-16 -right-16 w-80 h-80 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute -bottom-16 -left-16 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="relative rounded-3xl p-[1px] bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 shadow-2xl shadow-blue-500/10 overflow-hidden">
-        
-        <div class="bg-[#0f172a]/90 backdrop-blur-2xl rounded-[23px] p-10 md:p-16 text-center text-white relative overflow-hidden">
-            
-            <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
-
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <div class="inline-flex items-center gap-2 border border-blue-500/30 bg-blue-500/5 px-4 py-1.5 rounded-full mb-8">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                    </span>
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-blue-300">LU PING / Solo Architect</span>
-                </div>
-
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight tracking-tighter bg-gradient-to-b from-white to-slate-300 bg-clip-text text-transparent">
-                    Let's Build Your <span class="text-blue-400">Next Idea.</span>
-                </div>
-                
-                <p class="text-base text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed opacity-90">
-                    Felis Code は、<span class="text-white font-bold">個人開発者</span>による柔軟なテックスタジオです。<br class="hidden md:block">
-                    企業様はもちろん、<span class="text-white font-bold">個人のお客様の「自分専用のツールを作りたい」</span>というご依頼も大歓迎です。
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 text-left max-w-3xl mx-auto">
-                    <div class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
-                        <p class="text-[11px] font-mono font-bold uppercase mb-1.5 tracking-wider text-blue-400">Client Type</p>
-                        <p class="text-sm text-slate-100">法人・個人问わず対応可能</p>
-                    </div>
-                    <div class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
-                        <p class="text-[11px] font-mono font-bold uppercase mb-1.5 tracking-wider text-blue-400">Communication</p>
-                        <p class="text-sm text-slate-100">メール・Zoom・Meet等</p>
-                    </div>
-                    <div class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-colors">
-                        <p class="text-[11px] font-mono font-bold uppercase mb-1.5 tracking-wider text-blue-400">Work Style</p>
-                        <p class="text-sm text-slate-100">100% リモート・遠隔対応</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-5 justify-center items-center">
-                    <a href="mailto:info@example.com" class="group relative bg-white text-slate-900 px-12 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/20 active:scale-95 overflow-hidden">
-                        <div class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-700"></div>
-                        無料で相談する
-                    </a>
-                </div>
-                <p class="text-[10px] mono text-slate-500 mt-8 uppercase tracking-widest">
-                    Direct Expert-to-Client • No Middleman • Full Transparency
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
     </main>
 
+    <!-- ══════════════════ FOOTER ══════════════════ -->
     <footer id="about" class="border-t py-12 transition-colors duration-400">
       <div class="max-w-5xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+
           <div class="col-span-1 md:col-span-1">
-            <p
-              class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]"
-            >
-              Studio Profile
-            </p>
+            <p class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]">Studio Profile</p>
+            <img src="logo.svg" alt="Felis Code" class="logo-badge h-14 mb-5" />
             <p class="text-main text-sm leading-relaxed">
-              <span class="font-bold">Felis Code</span><br />
-              個人開発者ならではの機動力と柔軟性で、アイデアを形にします。法人・個人問わず、フルリモートでのご相談が可能です。
+              個人開発者ならではの機動力と柔軟性で、アイデアを形にします。法人・個人を問わず、フルリモートでのご相談が可能です。
             </p>
           </div>
 
           <div>
-            <p
-              class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]"
-            >
-              Structure
-            </p>
+            <p class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]">Structure</p>
             <p class="text-main text-sm">個人事業主 (Solo Architect)</p>
           </div>
 
           <div>
-            <p
-              class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]"
-            >
-              Representative
-            </p>
-            <p class="text-main text-sm font-bold">Felis Code</p>
-            <p class="text-xs text-sub mt-1">Full-Stack Developer</p>
+            <p class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]">Representative</p>
+            <p class="text-main text-sm font-bold">魯 萍 (Lu Ping)</p>
+            <p class="text-xs text-sub mt-1">Felis Code &middot; Full-Stack Developer</p>
           </div>
 
           <div>
-            <p
-              class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]"
-            >
-              Location
-            </p>
+            <p class="opacity-40 font-bold text-[10px] uppercase mb-4 tracking-[0.2em]">Location</p>
             <p class="text-main text-sm leading-tight">
               Hyogo, Kobe City<br />
-              <span class="text-xs text-sub"
-                >100% Remote / Online Meeting Available</span
-              >
+              <span class="text-xs text-sub">100% Remote / Online Meeting Available</span>
             </p>
           </div>
+
         </div>
 
-        <div
-          class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-100 dark:border-slate-800 opacity-60"
-        >
-          <div class="text-[10px] mono">
-            © 2026 Felis Code. ALL RIGHTS RESERVED.
-          </div>
-          <div
-            class="flex gap-6 mt-4 md:mt-0 text-[10px] font-bold uppercase tracking-widest"
-          >
-            <a
-              href="mailto:info@example.com"
-              class="hover:text-blue-500 transition-colors"
-              >Email</a
-            >
-            <a href="#" class="hover:text-blue-500 transition-colors">GitHub</a>
-            <a href="#" class="hover:text-blue-500 transition-colors"
-              >LinkedIn</a
-            >
+        <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t footer-inner opacity-60">
+          <div class="text-[10px] mono">© 2026 Felis Code. ALL RIGHTS RESERVED.</div>
+          <div class="flex gap-6 mt-4 md:mt-0 text-[10px] font-bold uppercase tracking-widest">
+            <a href="mailto:info@example.com" class="nav-link">Email</a>
+            <a href="#" class="nav-link">GitHub</a>
+            <a href="#" class="nav-link">LinkedIn</a>
           </div>
         </div>
       </div>
     </footer>
 
-    <button
-      id="backToTop"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      class="bg-blue-600 text-white p-3 rounded-full shadow-lg"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M5 10l7-7m0 0l7 7m-7-7v18"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path>
+    <!-- ══════════════════ BACK TO TOP ══════════════════ -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページトップへ">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M5 10l7-7m0 0l7 7m-7-7v18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
     </button>
 
-    <script>
-      function toggleTheme() {
-        const body = document.getElementById("body");
-        const headline = document.getElementById("headline");
-        const icon = document.getElementById("theme-icon");
-        const text = document.getElementById("theme-text");
-        if (body.classList.contains("dark-theme")) {
-          body.classList.replace("dark-theme", "light-theme");
-          headline.style.color = "#1e293b";
-          icon.innerText = "☀️";
-          text.innerText = "LIGHT MODE";
-        } else {
-          body.classList.replace("light-theme", "dark-theme");
-          headline.style.color = "#ffffff";
-          icon.innerText = "🌙";
-          text.innerText = "DARK MODE";
-        }
-      }
-      window.addEventListener("scroll", () => {
-        const btn = document.getElementById("backToTop");
-        btn.classList.toggle("show", window.scrollY > 300);
-      });
-    </script>
+    <script src="js/script.js"></script>
   </body>
 </html>
