@@ -3,37 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Felis Code | Official Site</title>
+    <title>Felis Code | Engineering Studio</title>
+    <meta name="description" content="神戸を拠点とする個人エンジニア・魯 萍 (Lu Ping) のフルスタック開発スタジオ。Web制作・SaaS開発・オーダーメイド開発をフルリモートでご対応。" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://felis-code.github.io" />
+    <meta property="og:title"       content="Felis Code | Engineering Studio" />
+    <meta property="og:description" content="神戸発のフルスタック開発スタジオ。Web制作・SaaS開発・バックエンド構築をフルリモートで。" />
+    <meta property="og:image"       content="https://felis-code.github.io/ogp.png" /><!-- ogp.png を別途用意してください -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body id="body" class="light-theme min-h-screen flex flex-col">
     <!-- ══════════════════ NAV ══════════════════ -->
     <nav class="sticky-nav">
-      <div
-        class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center"
-      >
-        <a
-          href="#"
-          onclick="
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return false;
-          "
-          class="flex-shrink-0"
-        >
+      <!-- Main bar -->
+      <div class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="flex-shrink-0">
           <img src="logo.svg" alt="Felis Code" class="logo-badge h-11" />
         </a>
-        <div
-          class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-bold opacity-80"
-        >
+
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-bold opacity-80">
           <a href="#services" class="nav-link">Services</a>
           <a href="#projects" class="nav-link">Projects</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#about"    class="nav-link">About</a>
+          <a href="#contact"  class="nav-link">Contact</a>
         </div>
-        <button onclick="toggleTheme()" class="theme-toggle-btn mono">
-          <span id="theme-text">DARK MODE</span>
-        </button>
+
+        <!-- Right controls -->
+        <div class="flex items-center gap-2">
+          <!-- Hamburger (mobile only) -->
+          <button id="hamburger" class="hamburger-btn md:hidden" onclick="toggleMenu()" aria-label="メニューを開く">
+            <span id="ham-icon">≡</span>
+          </button>
+          <!-- Theme toggle -->
+          <button onclick="toggleTheme()" class="theme-toggle-btn mono">
+            <span id="theme-text">DARK MODE</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu panel -->
+      <div id="mobile-menu">
+        <div class="max-w-5xl mx-auto px-8 py-6 flex flex-col gap-5 text-sub">
+          <a href="#services" class="mobile-nav-link">Services</a>
+          <a href="#projects" class="mobile-nav-link">Projects</a>
+          <a href="#about"    class="mobile-nav-link">About</a>
+          <a href="#contact"  class="mobile-nav-link">Contact</a>
+        </div>
       </div>
     </nav>
 

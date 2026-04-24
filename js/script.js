@@ -1,3 +1,10 @@
+function toggleMenu() {
+  const menu    = document.getElementById("mobile-menu");
+  const icon    = document.getElementById("ham-icon");
+  const isOpen  = menu.classList.toggle("open");
+  if (icon) icon.textContent = isOpen ? "✕" : "≡";
+}
+
 function toggleTheme() {
   const body = document.getElementById("body");
   const btnText = document.getElementById("theme-text");
@@ -33,6 +40,15 @@ const fadeObserver = new IntersectionObserver(
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-animate]").forEach((el) => fadeObserver.observe(el));
+
+  // Close mobile menu when any link inside it is tapped
+  document.querySelectorAll("#mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      document.getElementById("mobile-menu").classList.remove("open");
+      const icon = document.getElementById("ham-icon");
+      if (icon) icon.textContent = "≡";
+    });
+  });
 
   // Show "← Services" pill while the Projects section is visible
   const projectsSection = document.getElementById("projects");

@@ -215,9 +215,39 @@ body {
 #backToTop.show { opacity: 1; visibility: visible; }
 #backToTop:hover { transform: translateY(-3px); }
 
+/* ── Hamburger button (mobile only) ── */
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  font-size: 1.25rem;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  transition: opacity 0.2s;
+  color: inherit;
+}
+.hamburger-btn:hover { opacity: 0.65; }
+
 /* ── Mobile Menu ── */
-#mobile-menu        { display: none; }
-#mobile-menu.open   { display: flex; }
+#mobile-menu { display: none; }
+#mobile-menu.open { display: block; }
+
+.dark-theme  #mobile-menu { background: rgba(26, 28, 29, 0.97); border-top: 1px solid rgba(55,56,57,0.7); }
+.light-theme #mobile-menu { background: rgba(255,255,255,0.97); border-top: 1px solid rgba(226,232,240,0.9); }
+
+.mobile-nav-link {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.mobile-nav-link:hover { color: var(--brand-green); }
 
 /* ── Contact gradient border & dot grid ── */
 .contact-gradient-border {
