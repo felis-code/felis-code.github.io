@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Felis Code | Engineering Studio</title>
-    <meta name="description" content="神戸を拠点とする個人エンジニア・魯 萍 (Lu Ping) のフルスタック開発スタジオ。Web制作・SaaS開発・オーダーメイド開発をフルリモートでご対応。" />
-    <meta property="og:type"        content="website" />
-    <meta property="og:url"         content="https://felis-code.github.io" />
-    <meta property="og:title"       content="Felis Code | Engineering Studio" />
-    <meta property="og:description" content="神戸発のフルスタック開発スタジオ。Web制作・SaaS開発・バックエンド構築をフルリモートで。" />
-    <meta property="og:image"       content="https://felis-code.github.io/ogp.png" /><!-- ogp.png を別途用意してください -->
+    <meta
+      name="description"
+      content="神戸を拠点とする個人エンジニアのフルスタック開発スタジオ。Web制作・SaaS開発・オーダーメイド開発をフルリモートでご対応。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://felis-code.github.io" />
+    <meta property="og:title" content="Felis Code | Engineering Studio" />
+    <meta
+      property="og:description"
+      content="神戸発のフルスタック開発スタジオ。Web制作・SaaS開発・バックエンド構築をフルリモートで。"
+    />
+    <meta property="og:image" content="https://felis-code.github.io/ogp.png" />
+    <!-- ogp.png を別途用意してください -->
     <link rel="icon" type="image/svg+xml" href="logo.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css" />
@@ -18,23 +25,39 @@
     <!-- ══════════════════ NAV ══════════════════ -->
     <nav class="sticky-nav">
       <!-- Main bar -->
-      <div class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="flex-shrink-0">
+      <div
+        class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          onclick="
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return false;
+          "
+          class="flex-shrink-0"
+        >
           <img src="logo.svg" alt="Felis Code" class="logo-badge h-11" />
         </a>
 
         <!-- Desktop links -->
-        <div class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-bold opacity-80">
+        <div
+          class="hidden md:flex items-center gap-8 text-[11px] uppercase tracking-[0.2em] font-bold opacity-80"
+        >
           <a href="#services" class="nav-link">Services</a>
           <a href="#projects" class="nav-link">Projects</a>
-          <a href="#about"    class="nav-link">About</a>
-          <a href="#contact"  class="nav-link">Contact</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </div>
 
         <!-- Right controls -->
         <div class="flex items-center gap-2">
           <!-- Hamburger (mobile only) -->
-          <button id="hamburger" class="hamburger-btn md:hidden" onclick="toggleMenu()" aria-label="メニューを開く">
+          <button
+            id="hamburger"
+            class="hamburger-btn md:hidden"
+            onclick="toggleMenu()"
+            aria-label="メニューを開く"
+          >
             <span id="ham-icon">≡</span>
           </button>
           <!-- Theme toggle -->
@@ -49,8 +72,8 @@
         <div class="max-w-5xl mx-auto px-8 py-6 flex flex-col gap-5 text-sub">
           <a href="#services" class="mobile-nav-link">Services</a>
           <a href="#projects" class="mobile-nav-link">Projects</a>
-          <a href="#about"    class="mobile-nav-link">About</a>
-          <a href="#contact"  class="mobile-nav-link">Contact</a>
+          <a href="#about" class="mobile-nav-link">About</a>
+          <a href="#contact" class="mobile-nav-link">Contact</a>
         </div>
       </div>
     </nav>
@@ -504,14 +527,316 @@
               </h3>
               <span class="tag-badge">SaaS / 2026 Q3</span>
             </div>
-            <div
-              class="w-full aspect-video rounded-xl bg-[#1a1c1d] mb-8 border border-white/5 overflow-hidden"
-            >
-              <img
-                src="demo.gif"
-                alt="System Demo"
-                class="w-full h-full object-cover opacity-80"
-              />
+            <div class="saas-preview">
+              <!-- Left: Dashboard Wireframe -->
+              <div class="saas-left">
+                <span class="saas-label">Dashboard UI</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  viewBox="0 0 220 140"
+                  fill="none"
+                >
+                  <!-- Sidebar -->
+                  <rect
+                    x="0"
+                    y="0"
+                    width="44"
+                    height="140"
+                    fill="currentColor"
+                    fill-opacity="0.05"
+                  />
+                  <rect
+                    x="6"
+                    y="10"
+                    width="32"
+                    height="7"
+                    rx="2"
+                    fill="#45b059"
+                    fill-opacity="0.45"
+                  />
+                  <rect
+                    x="6"
+                    y="24"
+                    width="26"
+                    height="4"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.18"
+                  />
+                  <rect
+                    x="6"
+                    y="33"
+                    width="26"
+                    height="4"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.12"
+                  />
+                  <rect
+                    x="6"
+                    y="42"
+                    width="26"
+                    height="4"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.10"
+                  />
+                  <rect
+                    x="6"
+                    y="51"
+                    width="26"
+                    height="4"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.07"
+                  />
+                  <!-- Header bar -->
+                  <rect
+                    x="50"
+                    y="5"
+                    width="164"
+                    height="15"
+                    rx="3"
+                    fill="#45b059"
+                    fill-opacity="0.08"
+                  />
+                  <rect
+                    x="56"
+                    y="9"
+                    width="44"
+                    height="7"
+                    rx="2"
+                    fill="#45b059"
+                    fill-opacity="0.30"
+                  />
+                  <!-- Stat cards -->
+                  <rect
+                    x="50"
+                    y="26"
+                    width="48"
+                    height="30"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.05"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    stroke-opacity="0.12"
+                  />
+                  <rect
+                    x="56"
+                    y="31"
+                    width="22"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.18"
+                  />
+                  <rect
+                    x="56"
+                    y="38"
+                    width="34"
+                    height="10"
+                    rx="2"
+                    fill="#45b059"
+                    fill-opacity="0.28"
+                  />
+                  <rect
+                    x="104"
+                    y="26"
+                    width="48"
+                    height="30"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.05"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    stroke-opacity="0.12"
+                  />
+                  <rect
+                    x="110"
+                    y="31"
+                    width="22"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.18"
+                  />
+                  <rect
+                    x="110"
+                    y="38"
+                    width="34"
+                    height="10"
+                    rx="2"
+                    fill="#45b059"
+                    fill-opacity="0.45"
+                  />
+                  <rect
+                    x="158"
+                    y="26"
+                    width="56"
+                    height="30"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.05"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    stroke-opacity="0.12"
+                  />
+                  <rect
+                    x="164"
+                    y="31"
+                    width="22"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.18"
+                  />
+                  <rect
+                    x="164"
+                    y="38"
+                    width="40"
+                    height="10"
+                    rx="2"
+                    fill="#45b059"
+                    fill-opacity="0.18"
+                  />
+                  <!-- Table -->
+                  <rect
+                    x="50"
+                    y="63"
+                    width="164"
+                    height="70"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    stroke-opacity="0.12"
+                  />
+                  <rect
+                    x="50"
+                    y="63"
+                    width="164"
+                    height="14"
+                    rx="3"
+                    fill="#45b059"
+                    fill-opacity="0.07"
+                  />
+                  <rect
+                    x="56"
+                    y="68"
+                    width="22"
+                    height="4"
+                    rx="1"
+                    fill="#45b059"
+                    fill-opacity="0.40"
+                  />
+                  <rect
+                    x="96"
+                    y="68"
+                    width="22"
+                    height="4"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.14"
+                  />
+                  <rect
+                    x="136"
+                    y="68"
+                    width="22"
+                    height="4"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.14"
+                  />
+                  <rect
+                    x="56"
+                    y="84"
+                    width="148"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.07"
+                  />
+                  <rect
+                    x="56"
+                    y="92"
+                    width="148"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.05"
+                  />
+                  <rect
+                    x="56"
+                    y="100"
+                    width="148"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.07"
+                  />
+                  <rect
+                    x="56"
+                    y="108"
+                    width="100"
+                    height="3"
+                    rx="1"
+                    fill="currentColor"
+                    fill-opacity="0.05"
+                  />
+                  <!-- Status badges -->
+                  <rect
+                    x="170"
+                    y="82"
+                    width="28"
+                    height="7"
+                    rx="3"
+                    fill="#45b059"
+                    fill-opacity="0.22"
+                  />
+                  <rect
+                    x="170"
+                    y="90"
+                    width="28"
+                    height="7"
+                    rx="3"
+                    fill="#45b059"
+                    fill-opacity="0.12"
+                  />
+                  <rect
+                    x="170"
+                    y="98"
+                    width="28"
+                    height="7"
+                    rx="3"
+                    fill="#45b059"
+                    fill-opacity="0.22"
+                  />
+                </svg>
+              </div>
+              <!-- Right: Tech Stack -->
+              <div class="saas-right">
+                <div>
+                  <span class="saas-label">Tech Stack</span>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="tech-pill tech-pill-vue">Vue</span>
+                    <span class="tech-pill tech-pill-fastapi">FastAPI</span>
+                    <span class="tech-pill tech-pill-postgres">PostgreSQL</span>
+                    <span class="tech-pill tech-pill-python">Python</span>
+                    <span class="tech-pill tech-pill-tailwind">Tailwind</span>
+                    <span class="tech-pill tech-pill-aws">AWS</span>
+                  </div>
+                </div>
+                <div class="saas-divider">
+                  <span class="saas-label">Release Target</span>
+                  <p class="saas-release-date">2026 Q3</p>
+                  <p class="saas-release-desc">
+                    保育園向け配置管理・シフト自動化SaaS
+                  </p>
+                </div>
+              </div>
             </div>
             <p class="text-sub leading-relaxed">
               保育施設向け配置管理・シフト自動化SaaS。日本の配置基準（児童福祉施設の設備及び運営に関する基準）を自動計算し、複雑な法定制約をアルゴリズムで解決。2026年Q3リリース予定。
@@ -659,7 +984,11 @@ router = APIRouter()
     <!-- ══════════════════ BACK TO SERVICES (floating) ══════════════════ -->
     <button
       id="backToServices"
-      onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })"
+      onclick="
+        document
+          .getElementById('services')
+          .scrollIntoView({ behavior: 'smooth' })
+      "
       aria-label="Servicesへ戻る"
     >
       <span class="pill-arrow">←</span> Services

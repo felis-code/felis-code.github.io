@@ -249,6 +249,53 @@ body {
 }
 .mobile-nav-link:hover { color: var(--brand-green); }
 
+/* ── SaaS project card preview ── */
+.saas-preview {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2rem;
+}
+.dark-theme  .saas-preview { border-color: rgba(55,56,57,0.6); }
+.light-theme .saas-preview { border-color: #e2e8f0; }
+
+.saas-left { padding: 20px; border-right: 1px solid; }
+.dark-theme  .saas-left { background: rgba(20,22,23,0.75); border-color: rgba(55,56,57,0.5); }
+.light-theme .saas-left { background: #f8fafc; border-color: #e2e8f0; }
+
+.saas-right { padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.dark-theme  .saas-right { background: rgba(26,28,29,0.9); }
+.light-theme .saas-right { background: #ffffff; }
+
+.saas-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 10px; display: block; }
+.dark-theme  .saas-label { color: #475569; }
+.light-theme .saas-label { color: #94a3b8; }
+
+.saas-divider { border-top: 1px solid; padding-top: 12px; }
+.dark-theme  .saas-divider { border-color: rgba(55,56,57,0.5); }
+.light-theme .saas-divider { border-color: #f1f5f9; }
+
+.saas-release-date { font-size: 1rem; font-weight: 700; color: var(--brand-green); }
+.saas-release-desc { font-size: 10px; margin-top: 2px; }
+.dark-theme  .saas-release-desc { color: #475569; }
+.light-theme .saas-release-desc { color: #94a3b8; }
+
+/* ── Tech pills (language-color coded) ── */
+.tech-pill {
+  font-size: 10px; font-weight: 700;
+  font-family: "JetBrains Mono", monospace;
+  padding: 3px 10px; border-radius: 9999px;
+  color: white; white-space: nowrap;
+}
+.tech-pill-vue      { background: #45b059; }
+.tech-pill-fastapi  { background: #373839; }
+.tech-pill-postgres { background: #336791; }
+.tech-pill-python   { background: #f7c948; color: #1e2124; }
+.tech-pill-tailwind { background: #38bdf8; }
+.tech-pill-aws      { background: #f97316; }
+
 /* ── Contact gradient border & dot grid ── */
 .contact-gradient-border {
   background: linear-gradient(135deg, #45b059 0%, #373839 50%, #45b059 100%);
