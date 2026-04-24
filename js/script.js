@@ -33,4 +33,15 @@ const fadeObserver = new IntersectionObserver(
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-animate]").forEach((el) => fadeObserver.observe(el));
+
+  // Show "← Services" pill while the Projects section is visible
+  const projectsSection = document.getElementById("projects");
+  const backToServices = document.getElementById("backToServices");
+  if (projectsSection && backToServices) {
+    const servicesObserver = new IntersectionObserver(
+      ([entry]) => backToServices.classList.toggle("show", entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    servicesObserver.observe(projectsSection);
+  }
 });

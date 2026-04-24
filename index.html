@@ -638,6 +638,15 @@ router = APIRouter()
       </div>
     </footer>
 
+    <!-- ══════════════════ BACK TO SERVICES (floating) ══════════════════ -->
+    <button
+      id="backToServices"
+      onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })"
+      aria-label="Servicesへ戻る"
+    >
+      <span class="pill-arrow">←</span> Services
+    </button>
+
     <!-- ══════════════════ BACK TO TOP ══════════════════ -->
     <button
       id="backToTop"
