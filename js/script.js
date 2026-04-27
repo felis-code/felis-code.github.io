@@ -179,6 +179,23 @@ document.addEventListener("DOMContentLoaded", () => {
     startAuto();
   })();
 
+  // Service → Project carousel navigation (anchor links inside carousel slides)
+  const projectSlotMap = { "project-web": 0, "project-saas": 1, "project-custom": 2 };
+  document.querySelectorAll('a[href^="#project-"]').forEach((link) => {
+    const id = link.getAttribute("href").slice(1);
+    if (!(id in projectSlotMap)) return;
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const carousel = document.querySelector(".carousel-wrapper");
+      if (!carousel) return;
+      // Navigate carousel to the correct slide (dot index = real slide index)
+      const dot = carousel.querySelectorAll(".carousel-dot")[projectSlotMap[id]];
+      if (dot) dot.click();
+      // Scroll to the projects section
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
   // Close mobile menu when any link inside it is tapped
   document.querySelectorAll("#mobile-menu a").forEach((link) => {
     link.addEventListener("click", () => {
