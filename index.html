@@ -46,8 +46,8 @@
           <a href="#" class="nav-link">Home</a>
           <a href="#services" class="nav-link">Services</a>
           <a href="#projects" class="nav-link">Projects</a>
-          <a href="#about" class="nav-link">About</a>
           <a href="#contact" class="nav-link">Contact</a>
+          <a href="#about" class="nav-link">About</a>
         </div>
 
         <!-- Right controls -->
@@ -105,7 +105,7 @@
               ></span>
               <span
                 class="mono font-bold tracking-[0.22em] text-brand text-[11px] uppercase"
-                >Full-Stack Developer</span
+                >企画から開発・保守まで一気通貫のパートナー</span
               >
             </div>
 
@@ -113,20 +113,18 @@
             <p
               class="text-[0.95rem] md:text-base text-sub max-w-xl leading-[1.9]"
             >
-              大手にはない<strong class="font-bold text-main not-italic"
-                >「柔軟さ」</strong
-              >と、場所を選ばない<strong class="font-bold text-main not-italic"
-                >「身軽さ」</strong
-              >。<br />
-              「小回りの良さ」と「丁寧な対話」で、<strong
-                class="font-bold text-brand not-italic"
-                >一人のプロ</strong
-              >が最後まで責任を持ちます。
+              あなたの<strong class="font-bold text-main not-italic"
+                >「作りたい」</strong
+              >に、誰よりも丁寧に向き合いたい。<br />
+              場所や組織に縛られないからこそできる、
+              <strong class="font-bold text-main not-italic">柔軟な提案</strong
+              >とスピード感。<br />
+              システム開発の「最初から最後まで」、責任を持って伴走いたします。
             </p>
           </div>
 
           <!-- Logo -->
-          <div class="flex-shrink-0 order-1 md:order-2">
+          <div class="flex-shrink-0 order-1 md:order-2 hero-logo-wrap">
             <img
               src="logo.svg"
               alt="Felis Code Logo"
@@ -203,7 +201,7 @@
           <div
             class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group"
             data-animate
-            data-delay="0.1s"
+            data-delay="0.2s"
           >
             <div class="text-brand mb-5">
               <svg
@@ -325,92 +323,104 @@
                         >felis_web_stack.vue</span
                       >
                     </div>
+                    <!-- Scroll area: code is clipped here, cannot bleed into title bar -->
                     <div
-                      class="absolute top-12 left-0 w-full h-8 bg-gradient-to-b from-[#1a1c1d] to-transparent z-20 pointer-events-none"
-                    ></div>
-                    <div
-                      class="code-animate absolute top-16 left-0 w-full px-8 text-left font-mono text-[11px] md:text-xs leading-relaxed z-10"
+                      class="absolute inset-x-0 top-12 bottom-0 overflow-hidden"
                     >
-                      <div class="whitespace-pre text-slate-300">
-                        <span class="text-[#45b059]"
-                          >&lt;!-- Vue 3 Composition API --&gt;</span
-                        >
-                        <span class="text-pink-400">&lt;script setup&gt;</span>
-                        <span class="text-pink-400">import</span> { ref,
-                        onMounted }
-                        <span class="text-pink-400">from</span>
-                        <span class="text-orange-300">'vue'</span>
-                        <span class="text-pink-400">const</span> data =
-                        <span class="text-[#45b059]">ref</span>([])
-                        <span class="text-pink-400">const</span>
-                        <span class="text-yellow-300">load</span> =
-                        <span class="text-pink-400">async</span> () =&gt; {
-                        <span class="text-pink-400">const</span> res =
-                        <span class="text-pink-400">await</span>
-                        <span class="text-[#45b059]">fetch</span>(<span
-                          class="text-orange-300"
-                          >'/api/v1/staff'</span
-                        >) data.value =
-                        <span class="text-pink-400">await</span> res.<span
-                          class="text-yellow-300"
-                          >json</span
-                        >() }
-                        <span class="text-[#45b059]">onMounted</span>(load)
-                        <span class="text-pink-400">&lt;/script&gt;</span>
+                      <div
+                        class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-[#1a1c1d] to-transparent z-20 pointer-events-none"
+                      ></div>
+                      <div
+                        class="code-animate absolute top-4 left-0 w-full px-8 font-mono text-[11px] md:text-xs leading-relaxed z-10"
+                      >
+                        <div class="whitespace-pre text-slate-300">
+                          <span class="text-[#45b059]"
+                            >&lt;!-- Vue 3 Composition API --&gt;</span
+                          >
+                          <span class="text-pink-400"
+                            >&lt;script setup&gt;</span
+                          >
+                          <span class="text-pink-400">import</span> { ref,
+                          onMounted }
+                          <span class="text-pink-400">from</span>
+                          <span class="text-orange-300">'vue'</span>
+                          <span class="text-pink-400">const</span> data =
+                          <span class="text-[#45b059]">ref</span>([])
+                          <span class="text-pink-400">const</span>
+                          <span class="text-yellow-300">load</span> =
+                          <span class="text-pink-400">async</span> () =&gt; {
+                          <span class="text-pink-400">const</span> res =
+                          <span class="text-pink-400">await</span>
+                          <span class="text-[#45b059]">fetch</span>(<span
+                            class="text-orange-300"
+                            >'/api/v1/staff'</span
+                          >) data.value =
+                          <span class="text-pink-400">await</span> res.<span
+                            class="text-yellow-300"
+                            >json</span
+                          >() }
+                          <span class="text-[#45b059]">onMounted</span>(load)
+                          <span class="text-pink-400">&lt;/script&gt;</span>
 
-                        <span class="text-[#45b059]"
-                          ># --- FastAPI Backend ---</span
-                        >
-                        <span class="text-pink-400">@router</span>.<span
-                          class="text-yellow-300"
-                          >get</span
-                        >(<span class="text-orange-300">"/api/v1/staff"</span>)
-                        <span class="text-pink-400">async def</span>
-                        <span class="text-yellow-300">get_staff</span>(db:
-                        <span class="text-blue-300">Session</span> =
-                        <span class="text-yellow-300">Depends</span>(get_db)):
-                        <span class="text-slate-500"
-                          >"""PostgreSQL から配置データを取得"""</span
-                        >
-                        <span class="text-pink-400">return</span> db.<span
-                          class="text-yellow-300"
-                          >query</span
-                        >(Staff).<span class="text-yellow-300">all</span>()
+                          <span class="text-[#45b059]"
+                            ># --- FastAPI Backend ---</span
+                          >
+                          <span class="text-pink-400">@router</span>.<span
+                            class="text-yellow-300"
+                            >get</span
+                          >(<span class="text-orange-300">"/api/v1/staff"</span
+                          >)
+                          <span class="text-pink-400">async def</span>
+                          <span class="text-yellow-300">get_staff</span>(db:
+                          <span class="text-blue-300">Session</span> =
+                          <span class="text-yellow-300">Depends</span>(get_db)):
+                          <span class="text-slate-500"
+                            >"""PostgreSQL から配置データを取得"""</span
+                          >
+                          <span class="text-pink-400">return</span> db.<span
+                            class="text-yellow-300"
+                            >query</span
+                          >(Staff).<span class="text-yellow-300">all</span>()
 
-                        <span class="text-[#45b059]"
-                          ># --- AWS ap-northeast-1 ---</span
-                        >
-                        <span class="text-yellow-300">provider</span>: aws
-                        <span class="text-yellow-300">region</span>:
-                        ap-northeast-1
-                        <span class="text-yellow-300">stage</span>: production
-                        <span class="text-yellow-300">functions</span>:
-                        <span class="text-yellow-300">api</span>:
-                        <span class="text-yellow-300">handler</span>:
-                        <span class="text-orange-300">core.main</span>
-                        <span class="text-yellow-300">events</span>: -
-                        <span class="text-yellow-300">httpApi</span>:
-                        <span class="text-orange-300">ANY /api/{proxy+}</span>
+                          <span class="text-[#45b059]"
+                            ># --- AWS ap-northeast-1 ---</span
+                          >
+                          <span class="text-yellow-300">provider</span>: aws
+                          <span class="text-yellow-300">region</span>:
+                          ap-northeast-1
+                          <span class="text-yellow-300">stage</span>: production
+                          <span class="text-yellow-300">functions</span>:
+                          <span class="text-yellow-300">api</span>:
+                          <span class="text-yellow-300">handler</span>:
+                          <span class="text-orange-300">core.main</span>
+                          <span class="text-yellow-300">events</span>: -
+                          <span class="text-yellow-300">httpApi</span>:
+                          <span class="text-orange-300">ANY /api/{proxy+}</span>
 
-                        <span class="text-[#45b059]">&lt;!-- Loop --&gt;</span>
-                        <span class="text-pink-400">&lt;script setup&gt;</span>
-                        <span class="text-pink-400">import</span> { ref,
-                        onMounted }
-                        <span class="text-pink-400">from</span>
-                        <span class="text-orange-300">'vue'</span>
-                        <span class="text-pink-400">const</span> data =
-                        <span class="text-[#45b059]">ref</span>([])
+                          <span class="text-[#45b059]"
+                            >&lt;!-- Loop --&gt;</span
+                          >
+                          <span class="text-pink-400"
+                            >&lt;script setup&gt;</span
+                          >
+                          <span class="text-pink-400">import</span> { ref,
+                          onMounted }
+                          <span class="text-pink-400">from</span>
+                          <span class="text-orange-300">'vue'</span>
+                          <span class="text-pink-400">const</span> data =
+                          <span class="text-[#45b059]">ref</span>([])
+                        </div>
                       </div>
+                      <div
+                        class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#1a1c1d] to-transparent z-20 pointer-events-none"
+                      ></div>
                     </div>
-                    <div
-                      class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#1a1c1d] to-transparent z-20 pointer-events-none"
-                    ></div>
+                    <!-- /.scroll-area -->
                   </div>
 
                   <p class="text-sub leading-relaxed">
-                    神戸市内の小規模事業者向けWebサイト制作。Vue.js と Tailwind
-                    CSS
-                    によるモダンな技術選定と、長期保守まで一貫してご対応。大企業にはない柔軟さで、素早く・確実に形にします。
+                    小規模事業者向けWebサイト制作。Vue.js と Tailwind CSS
+                    によるモダンな技術選定と、長期保守まで一貫してご対応。<br />大企業にはない柔軟さで、素早く・確実に形にします。
                   </p>
                   <a href="#services" class="service-link">← Services</a>
                 </div>
@@ -426,7 +436,7 @@
                     class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
                   >
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
-                      Nursery Staff Scheduler
+                      開発中のプロジェクト（ステルスモード）
                     </h3>
                     <span class="tag-badge">SaaS / 2026 Q3</span>
                   </div>
@@ -723,18 +733,12 @@
                     <div class="saas-right">
                       <div>
                         <span class="saas-label">Tech Stack</span>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="grid grid-cols-3 gap-2">
                           <span class="tech-pill tech-pill-vue">Vue</span>
-                          <span class="tech-pill tech-pill-fastapi"
-                            >FastAPI</span
-                          >
-                          <span class="tech-pill tech-pill-postgres"
-                            >PostgreSQL</span
-                          >
+                          <span class="tech-pill tech-pill-fastapi">FastAPI</span>
+                          <span class="tech-pill tech-pill-postgres">PostgreSQL</span>
                           <span class="tech-pill tech-pill-python">Python</span>
-                          <span class="tech-pill tech-pill-tailwind"
-                            >Tailwind</span
-                          >
+                          <span class="tech-pill tech-pill-tailwind">Tailwind</span>
                           <span class="tech-pill tech-pill-aws">AWS</span>
                         </div>
                       </div>
@@ -742,16 +746,20 @@
                         <span class="saas-label">Release Target</span>
                         <p class="saas-release-date">2026 Q3</p>
                         <p class="saas-release-desc">
-                          保育園向け配置管理・シフト自動化SaaS
+                          「制約の多い現場」を、アルゴリズムで自由にする。
                         </p>
                       </div>
                     </div>
                   </div>
                   <p class="text-sub leading-relaxed">
-                    保育施設向け配置管理・シフト自動化SaaS。日本の配置基準（児童福祉施設の設備及び運営に関する基準）を自動計算し、複雑な法定制約をアルゴリズムで解決。2026年Q3リリース予定。
+                    現在、Felis Code では独自のバリデーション・ロジックを用いた
+                    B2B SaaS をステルス開発中です。<br />
+                    ステータス：ステルス開発中/ β版テスト実施中<br />
+                    ※守秘義務の関係上、業界の詳細については個別にお問い合わせください。<br />
                   </p>
                   <a href="#services" class="service-link">← Services</a>
                 </div>
+                　
               </div>
               <!-- /.carousel-slide -->
               <div class="carousel-slide">
@@ -769,12 +777,12 @@
                     <span class="tag-badge">Backend / Python</span>
                   </div>
 
-                  <!-- Static FastAPI code block -->
+                  <!-- Animated FastAPI code block -->
                   <div
-                    class="w-full rounded-xl bg-[#1a1c1d] mb-8 border border-white/10 shadow-2xl overflow-hidden"
+                    class="w-full h-72 rounded-xl bg-[#1a1c1d] mb-8 overflow-hidden relative border border-white/10 shadow-2xl"
                   >
                     <div
-                      class="flex gap-1.5 p-4 border-b border-white/5 bg-[#373839]/70"
+                      class="flex gap-1.5 p-4 border-b border-white/5 bg-[#373839]/70 relative z-30"
                     >
                       <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
                       <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
@@ -784,20 +792,55 @@
                         >scheduler_core.py</span
                       >
                     </div>
-                    <pre
-                      class="px-8 py-6 font-mono text-[11px] md:text-xs leading-relaxed overflow-x-auto text-slate-300"
-                    ><span class="text-[#45b059]">from</span> fastapi <span class="text-[#45b059]">import</span> APIRouter, Depends
-<span class="text-[#45b059]">from</span> sqlalchemy.orm <span class="text-[#45b059]">import</span> Session
-<span class="text-[#45b059]">from</span> .engine <span class="text-[#45b059]">import</span> KobeScheduler, JAPAN_CHILDCARE_LAW
+                    <div
+                      class="absolute inset-x-0 top-12 bottom-0 overflow-hidden"
+                    >
+                      <div
+                        class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-[#1a1c1d] to-transparent z-20 pointer-events-none"
+                      ></div>
+                      <div
+                        class="code-animate absolute top-4 left-0 w-full px-8 text-left font-mono text-[11px] md:text-xs leading-relaxed z-10"
+                      >
+                        <div class="whitespace-pre text-slate-300">
+                          <span class="text-[#45b059]">from</span> fastapi
+                          <span class="text-[#45b059]">import</span> APIRouter,
+                          Depends
+                          <span class="text-[#45b059]">from</span>
+                          sqlalchemy.orm
+                          <span class="text-[#45b059]">import</span> Session
+                          <span class="text-[#45b059]">from</span> .engine
+                          <span class="text-[#45b059]">import</span>
+                          KobeScheduler, JAPAN_CHILDCARE_LAW router =
+                          APIRouter()
 
-router = APIRouter()
-
-<span class="text-pink-400">@router.post</span>(<span class="text-orange-300">"/api/schedule/optimize"</span>)
-<span class="text-pink-400">async def</span> <span class="text-yellow-300">optimize</span>(payload: <span class="text-blue-300">SchedulePayload</span>, db: <span class="text-blue-300">Session</span> = <span class="text-yellow-300">Depends</span>(get_db)):
-    <span class="text-slate-500">"""保育士配置の最適化エンジン — 法定基準を自動充足"""</span>
-    engine = <span class="text-blue-300">KobeScheduler</span>(rules=JAPAN_CHILDCARE_LAW)
-    result = <span class="text-pink-400">await</span> engine.<span class="text-yellow-300">solve</span>(payload, db)
-    <span class="text-pink-400">return</span> {<span class="text-orange-300">"status"</span>: <span class="text-orange-300">"ok"</span>, <span class="text-orange-300">"schedule"</span>: result}</pre>
+                          <span class="text-pink-400">@router.post</span>(<span
+                            class="text-orange-300"
+                            >"/api/schedule/optimize"</span
+                          >) <span class="text-pink-400">async def</span>
+                          <span class="text-yellow-300">optimize</span>(payload:
+                          <span class="text-blue-300">SchedulePayload</span>,
+                          db: <span class="text-blue-300">Session</span> =
+                          <span class="text-yellow-300">Depends</span>(get_db)):
+                          engine =
+                          <span class="text-blue-300">KobeScheduler</span
+                          >(rules=JAPAN_CHILDCARE_LAW) result =
+                          <span class="text-pink-400">await</span> engine.<span
+                            class="text-yellow-300"
+                            >solve</span
+                          >(payload, db)
+                          <span class="text-pink-400">return</span> {<span
+                            class="text-orange-300"
+                            >"status"</span
+                          >: <span class="text-orange-300">"ok"</span>,
+                          <span class="text-orange-300">"schedule"</span>:
+                          result}
+                        </div>
+                      </div>
+                      <div
+                        class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#1a1c1d] to-transparent z-20 pointer-events-none"
+                      ></div>
+                    </div>
+                    <!-- /.scroll-area -->
                   </div>
 
                   <p class="text-sub leading-relaxed">
@@ -927,7 +970,7 @@ router = APIRouter()
               <!-- CTA -->
               <div class="flex justify-center">
                 <a
-                  href="mailto:info@example.com"
+                  href="mailto:luping263@gmail.com"
                   class="group relative bg-white text-slate-900 px-12 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-[#45b059]/25 active:scale-95 overflow-hidden"
                 >
                   <div
@@ -937,8 +980,17 @@ router = APIRouter()
                 </a>
               </div>
 
+              <p class="text-sm text-slate-400 mt-5 leading-relaxed">
+                料金はプロジェクトの規模・内容によって異なります。<br
+                  class="hidden md:block"
+                />
+                相談・お見積もりは<span class="text-[#45b059] font-bold"
+                  >無料</span
+                >です。お気軽にご連絡ください。
+              </p>
+
               <p
-                class="text-[10px] mono text-slate-500 mt-8 uppercase tracking-widest"
+                class="text-[10px] mono text-slate-500 mt-6 uppercase tracking-widest"
               >
                 Direct Expert-to-Client &middot; No Middleman &middot; Full
                 Transparency
@@ -947,24 +999,6 @@ router = APIRouter()
           </div>
         </div>
       </section>
-
-      <!-- ── TECH STACK ── -->
-      <!--  <section class="mb-24" data-animate data-delay="0s">
-        <h2
-          class="text-xs font-bold mb-6 uppercase tracking-[0.2em] text-brand"
-        >
-          Tech Stack
-        </h2>
-        <div class="flex flex-wrap gap-3">
-          <span class="stack-badge-lg">Vue.js</span>
-          <span class="stack-badge-lg">FastAPI</span>
-          <span class="stack-badge-lg">Python</span>
-          <span class="stack-badge-lg">PostgreSQL</span>
-          <span class="stack-badge-lg">Tailwind CSS</span>
-          <span class="stack-badge-lg">AWS</span>
-          <span class="stack-badge-lg">Git</span>
-        </div>
-      </section> -->
     </main>
 
     <!-- ══════════════════ FOOTER ══════════════════ -->
@@ -1030,19 +1064,6 @@ router = APIRouter()
         </div>
       </div>
     </footer>
-
-    <!-- ══════════════════ BACK TO SERVICES (floating) ══════════════════ -->
-    <button
-      id="backToServices"
-      onclick="
-        document
-          .getElementById('services')
-          .scrollIntoView({ behavior: 'smooth' })
-      "
-      aria-label="Servicesへ戻る"
-    >
-      <span class="pill-arrow">←</span> Services
-    </button>
 
     <!-- ══════════════════ BACK TO TOP ══════════════════ -->
     <button

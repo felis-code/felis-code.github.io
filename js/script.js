@@ -41,6 +41,21 @@ const fadeObserver = new IntersectionObserver(
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-animate]").forEach((el) => fadeObserver.observe(el));
 
+  // Strip HTML indentation from whitespace-pre (fixes visual left-indent caused by HTML formatting)
+  document.querySelectorAll(".code-animate .whitespace-pre").forEach((pre) => {
+    const tw = document.createTreeWalker(pre, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = tw.nextNode())) {
+      node.textContent = node.textContent.replace(/\n {12,}/g, "\n");
+    }
+  });
+
+  // Duplicate code-animate content for seamless infinite scroll loop
+  document.querySelectorAll(".code-animate").forEach((el) => {
+    const inner = el.firstElementChild;
+    if (inner) el.appendChild(inner.cloneNode(true));
+  });
+
   // ── Projects Carousel ──
   (function () {
     const wrapper  = document.querySelector(".carousel-wrapper");
@@ -51,11 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const dots     = wrapper.querySelectorAll(".carousel-dot");
     const bar      = wrapper.querySelector(".carousel-progress-bar");
     const counter  = wrapper.querySelector(".carousel-counter");
-    const REAL     = 3;       // number of real slides
-    const INTERVAL = 10000;   // 10s auto-play
+    const REAL     = 3;
+    const INTERVAL = 10000;
 
-    // Clone first and last slides for seamless infinite loop
-    // Track order after cloning: [clone-3][slide-1][slide-2][slide-3][clone-1]
+    // Build: [clone-slide3][slide1][slide2][slide3][clone-slide1]
     const realSlides = Array.from(track.querySelectorAll(".carousel-slide"));
     const cloneFirst = realSlides[0].cloneNode(true);
     const cloneLast  = realSlides[REAL - 1].cloneNode(true);
@@ -63,19 +77,28 @@ document.addEventListener("DOMContentLoaded", () => {
     cloneLast.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
     track.appendChild(cloneFirst);
     track.insertBefore(cloneLast, realSlides[0]);
+    // Valid tIdx range: 0..REAL+1 (= 0..4)
 
-    let tIdx = 1; // trackIndex: 1 = slide-1, 2 = slide-2, 3 = slide-3
-    let timer = null, rafId = null, startTime = 0, touchStartX = 0, jumping = false;
+    let tIdx = 1;
+    let isAnimating = false;
+    let timer = null, rafId = null, startTime = 0, touchStartX = 0;
 
-    function realIdx() { return tIdx - 1; } // 0-based real index
+    // Resolve which real slide is visually shown (handles clone positions)
+    function displayIdx() {
+      if (tIdx <= 0)         return REAL - 1; // clone of last slide
+      if (tIdx >= REAL + 1)  return 0;        // clone of first slide
+      return tIdx - 1;
+    }
 
     function updateUI() {
-      dots.forEach((d, i) => d.classList.toggle("active", i === realIdx()));
-      if (counter) counter.textContent = `${realIdx() + 1} / ${REAL}`;
+      const di = displayIdx();
+      dots.forEach((d, i) => d.classList.toggle("active", i === di));
+      if (counter) counter.textContent = `${di + 1} / ${REAL}`;
     }
 
     function moveTo(newIdx) {
-      if (jumping) return;
+      if (isAnimating) return; // block rapid clicks during animation
+      isAnimating = true;
       tIdx = newIdx;
       track.style.transition = "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)";
       track.style.transform  = `translateX(-${tIdx * 100}%)`;
@@ -83,22 +106,20 @@ document.addEventListener("DOMContentLoaded", () => {
       resetProgress();
     }
 
-    // After each animated transition, silently jump if we landed on a clone
-    track.addEventListener("transitionend", () => {
-      const total = REAL + 2;
-      if (tIdx === total - 1) {        // landed on clone-1 → jump to slide-1
-        jumping = true;
+    // After animation ends, silently snap back from clones to real slides
+    track.addEventListener("transitionend", (e) => {
+      if (e.propertyName !== "transform") return;
+      const TOTAL = REAL + 2;
+      if (tIdx >= TOTAL - 1) {
         track.style.transition = "none";
         tIdx = 1;
         track.style.transform = "translateX(-100%)";
-        requestAnimationFrame(() => { jumping = false; });
-      } else if (tIdx === 0) {          // landed on clone-3 → jump to slide-3
-        jumping = true;
+      } else if (tIdx <= 0) {
         track.style.transition = "none";
         tIdx = REAL;
         track.style.transform  = `translateX(-${REAL * 100}%)`;
-        requestAnimationFrame(() => { jumping = false; });
       }
+      requestAnimationFrame(() => { isAnimating = false; });
     });
 
     function prev() { moveTo(tIdx - 1); }
@@ -152,7 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "ArrowRight") { stopAuto(); next(); startAuto(); }
     });
 
-    // Initialize: position at slide-1, no animation
     track.style.transition = "none";
     track.style.transform  = "translateX(-100%)";
     updateUI();
@@ -168,14 +188,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Show "← Services" pill while the Projects section is visible
-  const projectsSection = document.getElementById("projects");
-  const backToServices = document.getElementById("backToServices");
-  if (projectsSection && backToServices) {
-    const servicesObserver = new IntersectionObserver(
-      ([entry]) => backToServices.classList.toggle("show", entry.isIntersecting),
-      { threshold: 0.05 }
-    );
-    servicesObserver.observe(projectsSection);
-  }
 });

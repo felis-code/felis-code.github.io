@@ -10,6 +10,20 @@
 
 html { scroll-behavior: smooth; }
 
+/* ── Hero Logo Float ── */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+.hero-logo-wrap {
+  animation: heroFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 8px 32px rgba(69, 176, 89, 0.20));
+  transition: filter 0.4s;
+}
+.hero-logo-wrap:hover {
+  filter: drop-shadow(0 8px 48px rgba(69, 176, 89, 0.45));
+}
+
 body {
   font-family: "Inter", sans-serif;
   transition: background-color 0.4s, color 0.4s;
@@ -141,7 +155,7 @@ body {
   0%   { transform: translateY(0); }
   100% { transform: translateY(-50%); }
 }
-.code-animate { animation: codeScroll 22s linear infinite; }
+.code-animate { animation: codeScroll 40s linear infinite; overflow: hidden; }
 
 /* ── Fade-In on Scroll ── */
 @keyframes fadeInUp {
