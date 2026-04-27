@@ -812,76 +812,42 @@
                     <span class="tag-badge">Backend / Python</span>
                   </div>
 
-                  <!-- Animated FastAPI code block -->
-                  <div
-                    class="w-full h-72 rounded-xl bg-[#1a1c1d] mb-8 overflow-hidden relative border border-white/10 shadow-2xl"
-                  >
-                    <div
-                      class="flex gap-1.5 p-4 border-b border-white/5 bg-[#373839]/70 relative z-30"
-                    >
-                      <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
-                      <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
-                      <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
-                      <span
-                        class="ml-4 text-[10px] text-slate-500 font-mono tracking-widest uppercase"
-                        >scheduler_core.py</span
-                      >
+                  <!-- Custom split: left value prop + right IDE typewriter -->
+                  <div class="custom-split mb-8">
+                    <!-- Left: Value proposition -->
+                    <div class="custom-left">
+                      <h4 class="custom-left-title">業務自動化・<br>システム開発</h4>
+                      <p class="custom-left-tagline">「その手作業、自動化しませんか？」</p>
+                      <p class="custom-left-desc">
+                        Excel 作業やバラバラなデータ管理をスッキリ整理。<br>
+                        あなた専用の「道具」を企画から運用まで一貫制作。
+                      </p>
+                      <ul class="custom-feature-list">
+                        <li>Excel 連携 OK</li>
+                        <li>24時間 安定稼働</li>
+                        <li>保守サポート付き</li>
+                      </ul>
+                      <a href="#contact" class="custom-cta">無料で相談する →</a>
                     </div>
-                    <div
-                      class="absolute inset-x-0 top-12 bottom-0 overflow-hidden"
-                    >
-                      <div
-                        class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-[#1a1c1d] to-transparent z-20 pointer-events-none"
-                      ></div>
-                      <div
-                        class="code-animate absolute top-4 left-0 w-full px-8 text-left font-mono text-[11px] md:text-xs leading-relaxed z-10"
-                      >
-                        <div class="whitespace-pre text-slate-300">
-                          <span class="text-[#45b059]">from</span> fastapi
-                          <span class="text-[#45b059]">import</span> APIRouter,
-                          Depends
-                          <span class="text-[#45b059]">from</span>
-                          sqlalchemy.orm
-                          <span class="text-[#45b059]">import</span> Session
-                          <span class="text-[#45b059]">from</span> .engine
-                          <span class="text-[#45b059]">import</span>
-                          KobeScheduler, JAPAN_CHILDCARE_LAW router =
-                          APIRouter()
-
-                          <span class="text-pink-400">@router.post</span>(<span
-                            class="text-orange-300"
-                            >"/api/schedule/optimize"</span
-                          >) <span class="text-pink-400">async def</span>
-                          <span class="text-yellow-300">optimize</span>(payload:
-                          <span class="text-blue-300">SchedulePayload</span>,
-                          db: <span class="text-blue-300">Session</span> =
-                          <span class="text-yellow-300">Depends</span>(get_db)):
-                          engine =
-                          <span class="text-blue-300">KobeScheduler</span
-                          >(rules=JAPAN_CHILDCARE_LAW) result =
-                          <span class="text-pink-400">await</span> engine.<span
-                            class="text-yellow-300"
-                            >solve</span
-                          >(payload, db)
-                          <span class="text-pink-400">return</span> {<span
-                            class="text-orange-300"
-                            >"status"</span
-                          >: <span class="text-orange-300">"ok"</span>,
-                          <span class="text-orange-300">"schedule"</span>:
-                          result}
+                    <!-- Right: IDE code viewer with typewriter animation -->
+                    <div class="custom-right">
+                      <div class="ide-bar">
+                        <div class="flex gap-1.5">
+                          <div class="w-2 h-2 rounded-full bg-[#ff5f56]"></div>
+                          <div class="w-2 h-2 rounded-full bg-[#ffbd2e]"></div>
+                          <div class="w-2 h-2 rounded-full bg-[#27c93f]"></div>
                         </div>
+                        <span class="ide-filename">automation_engine.py</span>
                       </div>
-                      <div
-                        class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#1a1c1d] to-transparent z-20 pointer-events-none"
-                      ></div>
+                      <div class="ide-body" id="ideTypewriterBody"></div>
+                      <div class="ide-statusbar">
+                        <span id="ideStatusLine">Ln 1</span>
+                        <span>UTF-8</span>
+                        <span>Python 3.12</span>
+                        <span style="color:#a3e4b0;">FastAPI</span>
+                      </div>
                     </div>
-                    <!-- /.scroll-area -->
                   </div>
-
-                  <p class="text-sub leading-relaxed">
-                    Python / FastAPI
-                    を用いたバックエンド開発。業務効率化ツールの設計・構築から、AWS（ap-northeast-1）での安定運用まで一貫してお任せください。
-                  </p>
                   <a href="#services" class="service-link">← Services</a>
                 </div>
               </div>

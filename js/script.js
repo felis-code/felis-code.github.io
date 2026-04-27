@@ -179,6 +179,67 @@ document.addEventListener("DOMContentLoaded", () => {
     startAuto();
   })();
 
+  // IDE Typewriter animation for custom card
+  (function () {
+    const body = document.getElementById("ideTypewriterBody");
+    const statusLine = document.getElementById("ideStatusLine");
+    if (!body) return;
+
+    const lines = [
+      '<span class="text-pink-400">from</span> fastapi <span class="text-pink-400">import</span> FastAPI, HTTPException',
+      '<span class="text-pink-400">from</span> pydantic <span class="text-pink-400">import</span> BaseModel, EmailStr, Field',
+      '<span class="text-pink-400">import</span> logging',
+      '',
+      '<span class="text-slate-500"># 業務データの定義：入力段階でミスを防ぐ</span>',
+      '<span class="text-pink-400">class</span> <span class="text-blue-300">AutomationTask</span>(BaseModel):',
+      '    task_name: <span class="text-blue-300">str</span> = <span class="text-[#45b059]">Field</span>(..., description=<span class="text-orange-300">"業務名"</span>)',
+      '    assignee_email: <span class="text-blue-300">EmailStr</span> = <span class="text-[#45b059]">Field</span>(...)',
+      '    priority: <span class="text-blue-300">int</span> = <span class="text-[#45b059]">Field</span>(<span class="text-orange-300">1</span>, ge=<span class="text-orange-300">1</span>, le=<span class="text-orange-300">5</span>)',
+      '',
+      'app = <span class="text-[#45b059]">FastAPI</span>(title=<span class="text-orange-300">"Felis Code 業務自動化エンジン"</span>)',
+      '',
+      '<span class="text-pink-400">@app.post</span>(<span class="text-orange-300">"/api/v1/execute-task"</span>, status_code=<span class="text-orange-300">201</span>)',
+      '<span class="text-pink-400">async def</span> <span class="text-yellow-300">run_business_logic</span>(task: <span class="text-blue-300">AutomationTask</span>):',
+      '    <span class="text-slate-500">"""手作業を自動化し、ヒューマンエラーを排除"""</span>',
+      '    result = {',
+      '        <span class="text-orange-300">"efficiency_gain"</span>: <span class="text-orange-300">"手作業の約85%を削減"</span>,',
+      '        <span class="text-orange-300">"infrastructure"</span>: <span class="text-orange-300">"Managed Cloud"</span>',
+      '    }',
+      '    <span class="text-pink-400">return</span> result',
+      '',
+      '<span class="text-pink-400">@app.get</span>(<span class="text-orange-300">"/health"</span>)',
+      '<span class="text-pink-400">async def</span> <span class="text-yellow-300">health_check</span>():',
+      '    <span class="text-pink-400">return</span> {<span class="text-orange-300">"status"</span>: <span class="text-orange-300">"Healthy"</span>}',
+    ];
+
+    // Build line elements
+    const lineEls = lines.map((html) => {
+      const el = document.createElement("div");
+      el.className = "ide-line";
+      el.innerHTML = html || " ";
+      body.appendChild(el);
+      return el;
+    });
+
+    let animated = false;
+    function animate() {
+      if (animated) return;
+      animated = true;
+      lineEls.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add("revealed");
+          if (statusLine) statusLine.textContent = "Ln " + (i + 1);
+        }, i * 55);
+      });
+    }
+
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { animate(); obs.disconnect(); } },
+      { threshold: 0.25 }
+    );
+    obs.observe(body);
+  })();
+
   // Service → Project carousel navigation (anchor links inside carousel slides)
   const projectSlotMap = { "project-web": 0, "project-saas": 1, "project-custom": 2 };
   document.querySelectorAll('a[href^="#project-"]').forEach((link) => {
