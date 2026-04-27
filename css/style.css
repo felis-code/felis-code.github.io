@@ -360,6 +360,115 @@ body {
 .service-link .arrow { transition: transform 0.2s; }
 .hover-card:hover .service-link .arrow { transform: translateX(5px); }
 
+/* ── Web Split Layout (Web制作 card: left code + right preview) ── */
+.web-split {
+  display: grid;
+  grid-template-columns: 56% 44%;
+  height: 17rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.dark-theme  .web-split { border: 1px solid rgba(255, 255, 255, 0.07); }
+.light-theme .web-split { border: 1px solid #e2e8f0; }
+
+.web-split-code {
+  background: #141516;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+.web-split-code .overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.web-split-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  overflow: hidden;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+.dark-theme  .web-split-preview { background-color: #1c1e1f; }
+.light-theme .web-split-preview { background-color: #f1f5f9; }
+
+.web-preview-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--brand-green);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Mini rendered cards in preview panel */
+.web-preview-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  flex: 1;
+  overflow: hidden;
+}
+.web-preview-card:hover {
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.18);
+  transform: translateY(-2px);
+}
+
+.web-preview-icon {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.web-preview-card:hover .web-preview-icon {
+  background: #2563eb;
+  color: white;
+}
+
+.web-preview-card-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.web-preview-card-desc {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  color: #94a3b8;
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.web-preview-card-link {
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #2563eb;
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-top: 3px;
+}
+.web-preview-card:hover .web-preview-card-link { opacity: 1; }
+
 /* ── Footer ── */
 .light-theme footer        { border-color: #e2e8f0; }
 .dark-theme  footer        { border-color: rgba(55, 56, 57, 0.7); }
