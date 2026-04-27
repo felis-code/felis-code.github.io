@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let tIdx = 1;
     let isAnimating = false;
-    let timer = null, rafId = null, startTime = 0, touchStartX = 0;
+    let touchStartX = 0;
 
     // Resolve which real slide is visually shown (handles clone positions)
     function displayIdx() {
@@ -103,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
       track.style.transition = "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)";
       track.style.transform  = `translateX(-${tIdx * 100}%)`;
       updateUI();
-      resetProgress();
     }
 
     // After animation ends, silently snap back from clones to real slides
@@ -125,58 +124,26 @@ document.addEventListener("DOMContentLoaded", () => {
     function prev() { moveTo(tIdx - 1); }
     function next() { moveTo(tIdx + 1); }
 
-    function resetProgress() {
-      cancelAnimationFrame(rafId);
-      bar.style.transition = "none";
-      bar.style.width = "0%";
-      if (timer) animateBar();
-    }
-
-    function animateBar() {
-      startTime = performance.now();
-      rafId = requestAnimationFrame(function tick(now) {
-        const pct = Math.min(((now - startTime) / INTERVAL) * 100, 100);
-        bar.style.width = pct + "%";
-        if (pct < 100) rafId = requestAnimationFrame(tick);
-      });
-    }
-
-    function startAuto() {
-      timer = setInterval(next, INTERVAL);
-      animateBar();
-    }
-
-    function stopAuto() {
-      clearInterval(timer); timer = null;
-      cancelAnimationFrame(rafId);
-      bar.style.transition = "none";
-      bar.style.width = "0%";
-    }
-
-    wrapper.querySelector(".carousel-btn--prev").addEventListener("click", () => { stopAuto(); prev(); startAuto(); });
-    wrapper.querySelector(".carousel-btn--next").addEventListener("click", () => { stopAuto(); next(); startAuto(); });
-    dots.forEach((d) => d.addEventListener("click", () => { stopAuto(); moveTo(+d.dataset.index + 1); startAuto(); }));
-
-    wrapper.addEventListener("mouseenter", stopAuto);
-    wrapper.addEventListener("mouseleave", startAuto);
+    wrapper.querySelector(".carousel-btn--prev").addEventListener("click", prev);
+    wrapper.querySelector(".carousel-btn--next").addEventListener("click", next);
+    dots.forEach((d) => d.addEventListener("click", () => moveTo(+d.dataset.index + 1)));
 
     viewport.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
     viewport.addEventListener("touchend", (e) => {
       const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) { stopAuto(); diff > 0 ? next() : prev(); startAuto(); }
+      if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
     });
 
     document.addEventListener("keydown", (e) => {
       const rect = wrapper.getBoundingClientRect();
       if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
-      if (e.key === "ArrowLeft")  { stopAuto(); prev(); startAuto(); }
-      if (e.key === "ArrowRight") { stopAuto(); next(); startAuto(); }
+      if (e.key === "ArrowLeft")  prev();
+      if (e.key === "ArrowRight") next();
     });
 
     track.style.transition = "none";
     track.style.transform  = "translateX(-100%)";
     updateUI();
-    startAuto();
   })();
 
   // IDE Typewriter animation for custom card
