@@ -363,7 +363,7 @@ body {
 /* ── Web Split Layout (Web制作 card: left code + right preview) ── */
 .web-split {
   display: grid;
-  grid-template-columns: 56% 44%;
+  grid-template-columns: 57% 44%;
   height: 17rem;
   border-radius: 12px;
   overflow: hidden;
@@ -667,7 +667,27 @@ body {
 .web-split.executed .web-run-btn { background: rgba(69, 176, 89, 0.14); border-color: rgba(69,176,89,0.4); }
 .web-split.executed .web-run-btn .web-run-icon { animation: none; }
 
-/* PREVIEW placeholder (before RUN) */
+/* ── Compile progress bar ── */
+.compile-bar {
+  position: absolute;
+  top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: var(--brand-green);
+  z-index: 30;
+  transition: none;
+  border-radius: 0 1px 1px 0;
+}
+.web-split.compiling .compile-bar {
+  width: 100%;
+  transition: width 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes compileFlash {
+  0%, 100% { filter: brightness(1); }
+  40%       { filter: brightness(1.08); }
+}
+.web-split.compiling { animation: compileFlash 0.45s ease; }
+
+/* ── Terminal-style placeholder ── */
 .web-preview-placeholder {
   flex: 1;
   display: flex;
@@ -675,22 +695,95 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  text-align: center;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 9.5px;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  padding: 12px;
-}
-.dark-theme  .web-preview-placeholder { color: rgba(148, 163, 184, 0.45); }
-.light-theme .web-preview-placeholder { color: rgba(100, 116, 139, 0.5); }
-.web-preview-placeholder strong { color: var(--brand-green); }
-.ph-icon {
-  font-size: 1.5rem;
-  color: rgba(69, 176, 89, 0.35);
-  line-height: 1;
+  padding: 10px 8px;
 }
 .web-split.executed .web-preview-placeholder { display: none; }
+
+.ph-terminal {
+  width: 100%;
+  background: #0c0d0f;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  position: relative;
+  font-family: "JetBrains Mono", monospace;
+}
+.ph-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.ph-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ph-term-title {
+  font-size: 8px;
+  color: rgba(100, 116, 139, 0.6);
+  margin-left: 4px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+.ph-term-body {
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ph-line {
+  font-size: 8.5px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.ph-prompt { color: var(--brand-green); font-weight: 700; }
+.ph-cmd { color: rgba(203, 213, 225, 0.6); }
+.ph-status { color: rgba(148, 163, 184, 0.5); gap: 5px; }
+.ph-status-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  animation: runPulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes dots {
+  0%   { content: "."; }
+  33%  { content: ".."; }
+  66%  { content: "..."; }
+  100% { content: "."; }
+}
+.ph-dots::after {
+  content: ".";
+  animation: dots 1.4s step-end infinite;
+}
+@keyframes scanline {
+  0%, 100% { top: 0%; opacity: 0; }
+  10%       { opacity: 1; }
+  90%       { opacity: 1; }
+  100%      { top: 100%; opacity: 0; }
+}
+.ph-scan {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(transparent, rgba(69, 176, 89, 0.2), transparent);
+  animation: scanline 3s ease-in-out infinite;
+  pointer-events: none;
+}
+.ph-hint {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+  color: rgba(100, 116, 139, 0.55);
+  text-align: center;
+  line-height: 1.5;
+}
+.ph-hint strong { color: var(--brand-green); }
 
 /* Description bullet list */
 .desc-bullets {
@@ -707,18 +800,92 @@ body {
 .light-theme .desc-bullets span { color: #64748b; }
 .desc-bullets span::first-letter { color: var(--brand-green); font-weight: 700; }
 
-/* Preview cards: hidden until RUN clicked */
+/* ── IDE blink cursor ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.ide-blink-cursor {
+  display: inline-block;
+  width: 1.5px;
+  height: 1em;
+  background: var(--brand-green);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Code minimap ── */
+.web-split-code { position: relative; }
+.ide-minimap {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  bottom: 44px;
+  width: 16px;
+  background: #0c0d0e;
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  padding: 4px 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mmbar {
+  height: 1.5px;
+  border-radius: 1px;
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+/* give room for minimap in code panel */
+.web-split-code .overflow-y-auto { padding-right: 20px; }
+
+/* ── Preview cards: staggered "jump" animation ── */
 .web-preview-card {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(18px) scale(0.94);
 }
 .web-split.executed .web-preview-card {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
-.web-split.executed .web-preview-card[data-delay="0"] { transition: opacity 0.3s 0s, transform 0.3s 0s, box-shadow 0.2s, transform 0.2s; }
-.web-split.executed .web-preview-card[data-delay="1"] { transition: opacity 0.3s 0.14s, transform 0.3s 0.14s, box-shadow 0.2s, transform 0.2s; }
-.web-split.executed .web-preview-card[data-delay="2"] { transition: opacity 0.3s 0.28s, transform 0.3s 0.28s, box-shadow 0.2s, transform 0.2s; }
+.web-split.executed .web-preview-card[data-delay="0"] {
+  transition: opacity 0.38s cubic-bezier(0.34,1.56,0.64,1) 0s,
+              transform 0.38s cubic-bezier(0.34,1.56,0.64,1) 0s,
+              box-shadow 0.2s;
+}
+.web-split.executed .web-preview-card[data-delay="1"] {
+  transition: opacity 0.38s cubic-bezier(0.34,1.56,0.64,1) 0.15s,
+              transform 0.38s cubic-bezier(0.34,1.56,0.64,1) 0.15s,
+              box-shadow 0.2s;
+}
+.web-split.executed .web-preview-card[data-delay="2"] {
+  transition: opacity 0.38s cubic-bezier(0.34,1.56,0.64,1) 0.3s,
+              transform 0.38s cubic-bezier(0.34,1.56,0.64,1) 0.3s,
+              box-shadow 0.2s;
+}
+
+/* ── Z-axis depth: preview floats above code panel ── */
+.web-split-preview {
+  position: relative;
+  z-index: 5;
+  transform: translateX(-14px);
+  box-shadow: -16px 0 40px rgba(0, 0, 0, 0.6);
+}
+.web-split-preview::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.12)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 
 /* Description text: slide-in animation per slide */
 .desc-animate {
@@ -797,7 +964,7 @@ body {
     grid-template-columns: 1fr;
     height: 11rem;
   }
-  .web-split-preview { display: none; }
+  .web-split-preview { display: none; transform: none; }
 
   /* web-split in "preview" mode: swap panels */
   .web-split.show-preview .web-split-code { display: none; }

@@ -1,20 +1,34 @@
-// Web split: RUN / RESET toggle
+// Web split: RUN (compile animation) / RESET
 function toggleWebView(btn) {
   const split = btn.closest(".web-split");
   if (!split) return;
   const isMobile = window.innerWidth < 768;
-  if (isMobile) {
-    const isPreview = split.classList.toggle("show-preview");
-    split.classList.toggle("executed", isPreview);
-    btn.innerHTML = isPreview
-      ? '<span class="web-run-icon">‹/›</span> CODE'
-      : '<span class="web-run-icon">▶</span> RUN';
-  } else {
-    const isExecuted = split.classList.toggle("executed");
-    btn.innerHTML = isExecuted
-      ? '<span class="web-run-icon">■</span> RESET'
-      : '<span class="web-run-icon">▶</span> RUN';
+
+  if (split.classList.contains("executed")) {
+    // RESET
+    split.classList.remove("executed", "show-preview");
+    const bar = split.querySelector(".compile-bar");
+    if (bar) { bar.style.transition = "none"; bar.style.width = "0%"; }
+    btn.innerHTML = '<span class="web-run-icon">▶</span> RUN';
+    return;
   }
+
+  if (split.classList.contains("compiling")) return; // guard double-click
+
+  // COMPILE → flash → execute
+  split.classList.add("compiling");
+  btn.innerHTML = '<span style="font-size:0.9em;opacity:0.7">⏳</span> COMPILING...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    split.classList.remove("compiling");
+    split.classList.add("executed");
+    if (isMobile) split.classList.add("show-preview");
+    btn.innerHTML = isMobile
+      ? '<span>‹/›</span> CODE'
+      : '<span class="web-run-icon">■</span> RESET';
+    btn.disabled = false;
+  }, 650);
 }
 
 // Fullscreen modal
@@ -248,6 +262,31 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.25 }
     );
     obs.observe(body);
+  })();
+
+  // Generate IDE minimap bars (approximate code structure)
+  (function () {
+    const minimap = document.querySelector(".ide-minimap");
+    if (!minimap) return;
+    const lines = [
+      [0.85, "#6b7280"], [0.50, "#f472b6"], [0.60, "#fde047"],
+      [0.65, "#fde047"], [0.55, "#fde047"], [0.55, "#fde047"],
+      [0.12, "#cbd5e1"], [0.70, "#fde047"], [0.08, "transparent"],
+      [0.40, "#45b059"], [0.55, "#93c5fd"], [0.72, "#fde047"],
+      [0.88, "#fb923c"], [0.75, "#fde047"], [0.95, "#fb923c"],
+      [0.18, "#93c5fd"], [0.62, "#93c5fd"], [0.82, "#fb923c"],
+      [0.18, "#93c5fd"], [0.50, "#93c5fd"], [0.18, "#93c5fd"],
+      [0.55, "#93c5fd"], [0.30, "#cbd5e1"], [0.28, "#93c5fd"],
+      [0.45, "#93c5fd"], [0.28, "#cbd5e1"], [0.28, "#93c5fd"],
+      [0.50, "#93c5fd"], [0.18, "#93c5fd"],
+    ];
+    lines.forEach(([w, c]) => {
+      const bar = document.createElement("div");
+      bar.className = "mmbar";
+      bar.style.width = Math.round(w * 12) + "px";
+      bar.style.background = c;
+      minimap.appendChild(bar);
+    });
   })();
 
   // Animate description text — reveal once on first view, then stay fixed
