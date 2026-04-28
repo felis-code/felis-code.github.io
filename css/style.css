@@ -363,8 +363,8 @@ body {
 /* ── Web Split Layout (Web制作 card: left code + right preview) ── */
 .web-split {
   display: grid;
-  grid-template-columns: 57% 44%;
-  height: 17rem;
+  grid-template-columns: 57% 43%;
+  height: 20rem;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
@@ -865,27 +865,282 @@ body {
               box-shadow 0.2s;
 }
 
-/* ── Z-axis depth: preview floats above code panel ── */
-.web-split-preview {
+/* ── IDE Full Title Bar ── */
+.ide-full-bar {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: #1a1b1f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  gap: 0;
+}
+.ide-file-tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  padding: 3px 12px 3px 8px;
+  border-radius: 4px 4px 0 0;
+  background: #141516;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-bottom: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  color: #94a3b8;
+}
+.ide-bar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ide-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  color: rgba(148, 163, 184, 0.55);
+  letter-spacing: 0.04em;
+}
+.ide-live-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  animation: runPulse 2s ease-in-out infinite;
+}
+.ide-run-main-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  background: var(--brand-green);
+  color: #071208;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.ide-run-main-btn:hover { background: #5bc96b; }
+.ide-run-main-btn:active { transform: scale(0.96); }
+.ide-run-main-btn .web-run-icon { animation: runPulse 1.8s ease-in-out infinite; display: inline-block; }
+.web-split.compiling .ide-run-main-btn { background: rgba(69,176,89,0.35); color: rgba(255,255,255,0.6); cursor: not-allowed; }
+.web-split.executed  .ide-run-main-btn { background: rgba(100,116,139,0.25); color: #64748b; }
+.web-split.executed  .ide-run-main-btn .web-run-icon { animation: none; }
+
+/* ── Code editor body (line-nums + code + minimap) ── */
+.code-editor-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+.code-line-nums {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  line-height: 1.75;
+  color: rgba(100, 116, 139, 0.35);
+  padding: 12px 6px 12px 6px;
+  min-width: 26px;
+  text-align: right;
+  flex-shrink: 0;
+  user-select: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  white-space: pre;
+}
+/* minimap now positions inside code-editor-body */
+.code-editor-body .ide-minimap {
+  top: 0; bottom: 0;
+}
+
+/* ── preview-outer: z-axis wrapper ── */
+.preview-outer {
   position: relative;
   z-index: 5;
   transform: translateX(-14px);
-  box-shadow: -16px 0 40px rgba(0, 0, 0, 0.6);
 }
-.web-split-preview::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.04) 50%,
-    rgba(255, 255, 255, 0.12)
-  );
-  pointer-events: none;
+
+/* ── iPad device frame ── */
+.ipad-device {
+  width: 100%;
+  height: 100%;
+  background: #1d1d24;
+  border-radius: 28px;
+  border: 7px solid #2e2e38;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 28px 64px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ipad-top-bar {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1d1d24;
+  flex-shrink: 0;
+}
+.ipad-cam {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #2c2c38;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.ipad-screen-area {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: #0f1012;
+}
+.ipad-screen-area .web-split-preview {
+  height: 100%;
+  position: relative;
   z-index: 1;
 }
+.ipad-bottom-bar {
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1d1d24;
+  flex-shrink: 0;
+}
+.ipad-home-bar {
+  width: 36px; height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Mobile: Dynamic Island + Glass card stack ── */
+.mobile-preview-panel {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 0;
+}
+.dynamic-island {
+  align-self: center;
+  background: #000;
+  border-radius: 20px;
+  height: 26px;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  animation: di-breathe 3s ease-in-out infinite;
+}
+@keyframes di-breathe {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(69,176,89,0.18); }
+  50%       { box-shadow: 0 0 0 1.5px rgba(69,176,89,0.55), 0 0 18px rgba(69,176,89,0.12); }
+}
+.di-cam-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #1a1a20;
+  border: 1.5px solid #2a2a32;
+}
+.di-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+.di-pulse {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  animation: runPulse 2s ease-in-out infinite;
+}
+.glass-card-stack {
+  position: relative;
+  height: 150px;
+  margin: 0 4px;
+}
+.glass-card {
+  position: absolute;
+  left: 0; right: 0;
+  background: rgba(18, 20, 24, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(69, 176, 89, 0.18);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(28px) scale(0.93);
+}
+.web-split.executed .glass-card[data-delay="0"] {
+  top: 0; z-index: 3;
+  opacity: 1; transform: translateY(0) scale(1);
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.05s;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(69,176,89,0.22);
+}
+.web-split.executed .glass-card[data-delay="1"] {
+  top: 50px; z-index: 2;
+  opacity: 0.9; transform: translateY(0) scale(0.97);
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.18s;
+}
+.web-split.executed .glass-card[data-delay="2"] {
+  top: 100px; z-index: 1;
+  opacity: 0.75; transform: translateY(0) scale(0.94);
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.31s;
+}
+.gc-icon {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  background: rgba(69, 176, 89, 0.14);
+  color: var(--brand-green);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.gc-title { font-size: 10px; font-weight: 700; color: #f1f5f9; }
+.gc-sub { font-family: "JetBrains Mono", monospace; font-size: 8px; color: rgba(148,163,184,0.6); margin-top: 1px; }
+.gc-arrow { margin-left: auto; font-size: 11px; color: var(--brand-green); flex-shrink: 0; }
+
+/* ── Particle beam (mobile) ── */
+.beam-container {
+  display: none;
+  position: absolute;
+  top: -4px; left: 0; right: 0;
+  height: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 50;
+}
+@keyframes beamFly {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  15%  { opacity: 1; }
+  85%  { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(var(--dx, 0px), 50px) scale(0.4); }
+}
+.beam-pt {
+  position: absolute;
+  top: 0; left: calc(50% + var(--dx, 0px));
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  box-shadow: 0 0 6px var(--brand-green);
+  opacity: 0;
+}
+.web-split.compiling .beam-pt:nth-child(1) { animation: beamFly 0.5s ease-out calc(var(--d, 0s)) forwards; }
+.web-split.compiling .beam-pt:nth-child(2) { animation: beamFly 0.5s ease-out calc(var(--d, 0s)) forwards; }
+.web-split.compiling .beam-pt:nth-child(3) { animation: beamFly 0.5s ease-out calc(var(--d, 0s)) forwards; }
+.web-split.compiling .beam-pt:nth-child(4) { animation: beamFly 0.5s ease-out calc(var(--d, 0s)) forwards; }
+.web-split.compiling .beam-pt:nth-child(5) { animation: beamFly 0.5s ease-out calc(var(--d, 0s)) forwards; }
 
 /* Description text: slide-in animation per slide */
 .desc-animate {
@@ -959,12 +1214,17 @@ body {
   .carousel-slide .desc-animate { font-size: 0.8rem; }
   .desc-bullets span { font-size: 0.78rem; line-height: 1.75; }
 
-  /* Web split: code full width, Run button shown, preview hidden by default */
+  /* Web split mobile: code on top, dynamic island + glass below */
   .web-split {
     grid-template-columns: 1fr;
-    height: 11rem;
+    height: auto;
+    gap: 10px;
   }
-  .web-split-preview { display: none; transform: none; }
+  .web-split-code { height: 11rem; }
+  .ipad-device { display: none; }
+  .mobile-preview-panel { display: flex; }
+  .beam-container { display: block; }
+  .preview-outer { transform: none; z-index: auto; }
 
   /* web-split in "preview" mode: swap panels */
   .web-split.show-preview .web-split-code { display: none; }

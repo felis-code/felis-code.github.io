@@ -2,31 +2,27 @@
 function toggleWebView(btn) {
   const split = btn.closest(".web-split");
   if (!split) return;
-  const isMobile = window.innerWidth < 768;
 
   if (split.classList.contains("executed")) {
     // RESET
-    split.classList.remove("executed", "show-preview");
+    split.classList.remove("executed");
     const bar = split.querySelector(".compile-bar");
     if (bar) { bar.style.transition = "none"; bar.style.width = "0%"; }
     btn.innerHTML = '<span class="web-run-icon">▶</span> RUN';
     return;
   }
 
-  if (split.classList.contains("compiling")) return; // guard double-click
+  if (split.classList.contains("compiling")) return;
 
   // COMPILE → flash → execute
   split.classList.add("compiling");
-  btn.innerHTML = '<span style="font-size:0.9em;opacity:0.7">⏳</span> COMPILING...';
+  btn.innerHTML = '<span style="font-size:0.85em;opacity:0.65">⏳</span> COMPILING...';
   btn.disabled = true;
 
   setTimeout(() => {
     split.classList.remove("compiling");
     split.classList.add("executed");
-    if (isMobile) split.classList.add("show-preview");
-    btn.innerHTML = isMobile
-      ? '<span>‹/›</span> CODE'
-      : '<span class="web-run-icon">■</span> RESET';
+    btn.innerHTML = '<span class="web-run-icon">■</span> RESET';
     btn.disabled = false;
   }, 650);
 }
@@ -262,6 +258,16 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.25 }
     );
     obs.observe(body);
+  })();
+
+  // Generate line numbers for code editor
+  (function () {
+    const nums = document.getElementById("codeLineNums");
+    if (!nums) return;
+    const pre = nums.closest(".code-editor-body")?.querySelector("pre");
+    if (!pre) return;
+    const lineCount = (pre.textContent.match(/\n/g) || []).length + 1;
+    nums.textContent = Array.from({ length: lineCount }, (_, i) => i + 1).join("\n");
   })();
 
   // Generate IDE minimap bars (approximate code structure)
