@@ -616,6 +616,229 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* ── Fullscreen button (card header) ── */
+.fs-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(69, 176, 89, 0.35);
+  color: var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.dark-theme  .fs-btn { background: rgba(69, 176, 89, 0.05); }
+.light-theme .fs-btn { background: transparent; }
+.fs-btn:hover {
+  background: rgba(69, 176, 89, 0.15);
+  border-color: var(--brand-green);
+}
+
+/* ── Web split: Run/Execute button (visible on all screens) ── */
+@keyframes runPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(0.85); }
+}
+.web-run-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(69, 176, 89, 0.08);
+  border: none;
+  border-top: 1px solid rgba(69, 176, 89, 0.22);
+  color: var(--brand-green);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.web-run-btn:hover { background: rgba(69, 176, 89, 0.18); }
+.web-run-btn .web-run-icon { animation: runPulse 1.8s ease-in-out infinite; display: inline-block; }
+.web-split.executed .web-run-btn { background: rgba(69, 176, 89, 0.14); border-color: rgba(69,176,89,0.4); }
+.web-split.executed .web-run-btn .web-run-icon { animation: none; }
+
+/* PREVIEW placeholder (before RUN) */
+.web-preview-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  padding: 12px;
+}
+.dark-theme  .web-preview-placeholder { color: rgba(148, 163, 184, 0.45); }
+.light-theme .web-preview-placeholder { color: rgba(100, 116, 139, 0.5); }
+.web-preview-placeholder strong { color: var(--brand-green); }
+.ph-icon {
+  font-size: 1.5rem;
+  color: rgba(69, 176, 89, 0.35);
+  line-height: 1;
+}
+.web-split.executed .web-preview-placeholder { display: none; }
+
+/* Description bullet list */
+.desc-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 0.25rem;
+}
+.desc-bullets span {
+  font-size: 0.83rem;
+  line-height: 1.7;
+}
+.dark-theme  .desc-bullets span { color: #94a3b8; }
+.light-theme .desc-bullets span { color: #64748b; }
+.desc-bullets span::first-letter { color: var(--brand-green); font-weight: 700; }
+
+/* Preview cards: hidden until RUN clicked */
+.web-preview-card {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.web-split.executed .web-preview-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.web-split.executed .web-preview-card[data-delay="0"] { transition: opacity 0.3s 0s, transform 0.3s 0s, box-shadow 0.2s, transform 0.2s; }
+.web-split.executed .web-preview-card[data-delay="1"] { transition: opacity 0.3s 0.14s, transform 0.3s 0.14s, box-shadow 0.2s, transform 0.2s; }
+.web-split.executed .web-preview-card[data-delay="2"] { transition: opacity 0.3s 0.28s, transform 0.3s 0.28s, box-shadow 0.2s, transform 0.2s; }
+
+/* Description text: slide-in animation per slide */
+.desc-animate {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.desc-animate.desc-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Fullscreen Modal ── */
+.fs-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(4px);
+}
+.fs-modal.open { display: flex; }
+
+.fs-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1.25rem;
+  padding: 2rem 2.5rem;
+}
+.dark-theme  .fs-modal-inner { background: #1a1c1d; border: 1px solid rgba(55,56,57,0.7); }
+.light-theme .fs-modal-inner { background: #ffffff; border: 1px solid #e2e8f0; }
+
+.fs-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(69,176,89,0.3);
+  color: var(--brand-green);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: background 0.2s;
+}
+.fs-modal-close:hover { background: rgba(69,176,89,0.12); }
+
+.fs-modal-body .web-split,
+.fs-modal-body .custom-split {
+  height: 22rem;
+}
+.fs-modal-body .custom-right { display: flex; }
+
+/* ── Mobile responsive overrides (< 768px) ── */
+@media (max-width: 767px) {
+
+  /* Reduce card padding */
+  .carousel-slide .hover-card { padding: 1.25rem; }
+  .carousel-slide .hover-card h3 { font-size: 1.35rem; }
+  /* Description text: smaller on mobile */
+  .carousel-slide .desc-animate { font-size: 0.8rem; }
+  .desc-bullets span { font-size: 0.78rem; line-height: 1.75; }
+
+  /* Web split: code full width, Run button shown, preview hidden by default */
+  .web-split {
+    grid-template-columns: 1fr;
+    height: 11rem;
+  }
+  .web-split-preview { display: none; }
+
+  /* web-split in "preview" mode: swap panels */
+  .web-split.show-preview .web-split-code { display: none; }
+  .web-split.show-preview .web-split-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  /* Nursery saas-preview: stack vertically */
+  .saas-preview { grid-template-columns: 1fr; }
+  .saas-left {
+    border-right: none;
+    border-bottom: 1px solid;
+    padding: 14px;
+  }
+  .dark-theme  .saas-left { border-bottom-color: rgba(55,56,57,0.5); }
+  .light-theme .saas-left { border-bottom-color: #e2e8f0; }
+  .saas-left svg { max-height: 100px; width: 100%; }
+  .saas-right { padding: 14px; }
+
+  /* Custom split: stack vertically (both panels visible) */
+  .custom-split {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 10rem;
+    height: auto;
+  }
+  .custom-left {
+    padding: 1rem;
+    gap: 8px;
+  }
+  .custom-right {
+    display: flex;
+    height: 10rem;
+  }
+  .custom-left-title { font-size: 0.9rem; }
+  .custom-left-tagline { font-size: 0.72rem; }
+
+}
+
 /* ── Footer ── */
 .light-theme footer        { border-color: #e2e8f0; }
 .dark-theme  footer        { border-color: rgba(55, 56, 57, 0.7); }

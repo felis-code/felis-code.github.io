@@ -105,7 +105,7 @@
               ></span>
               <span
                 class="mono font-bold tracking-[0.22em] text-brand text-[11px] uppercase"
-                >企画から開発・保守まで一気通貫のパートナー</span
+                >個人WEB開発　・テックスタジオ</span
               >
             </div>
 
@@ -115,11 +115,11 @@
             >
               あなたの<strong class="font-bold text-main not-italic"
                 >「作りたい」</strong
-              >に、誰よりも丁寧に向き合いたい。<br />
+              >に、<br />誰よりも丁寧に向き合いたい。<br />
               場所や組織に縛られないからこそできる、
-              <strong class="font-bold text-main not-italic">柔軟な提案</strong
-              >とスピード感。<br />
-              システム開発の「最初から最後まで」、責任を持って伴走いたします。
+              <strong class="font-bold text-main not-italic"
+                >柔軟なご提案</strong
+              >。
             </p>
           </div>
 
@@ -302,7 +302,26 @@
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
                       Web制作・構築
                     </h3>
-                    <span class="tag-badge">Web / Frontend</span>
+                    <div class="flex items-center gap-2">
+                      <span class="tag-badge">Web / Frontend</span>
+                      <button
+                        class="fs-btn"
+                        onclick="openFullscreen('project-web')"
+                        aria-label="全画面表示"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
 
                   <!-- Split: left code editor + right rendered preview -->
@@ -360,11 +379,23 @@
   <span class="text-blue-400">&lt;/div&gt;</span>
 <span class="text-[#45b059]">&lt;/template&gt;</span></pre>
                       </div>
+                      <button class="web-run-btn" onclick="toggleWebView(this)">
+                        <span class="web-run-icon">▶</span> RUN
+                      </button>
                     </div>
                     <!-- Right: Rendered preview -->
                     <div class="web-split-preview">
                       <span class="web-preview-label">PREVIEW</span>
-                      <a href="#project-web" class="web-preview-card group">
+                      <!-- Placeholder shown before RUN is clicked -->
+                      <div class="web-preview-placeholder">
+                        <div class="ph-icon">▶</div>
+                        <p>左の <strong>RUN</strong> を<br />クリックで実行</p>
+                      </div>
+                      <a
+                        href="#project-web"
+                        class="web-preview-card group"
+                        data-delay="0"
+                      >
                         <div class="web-preview-icon">
                           <svg
                             class="w-4 h-4"
@@ -390,7 +421,11 @@
                           <div class="web-preview-card-link">詳細を見る →</div>
                         </div>
                       </a>
-                      <a href="#project-saas" class="web-preview-card group">
+                      <a
+                        href="#project-saas"
+                        class="web-preview-card group"
+                        data-delay="1"
+                      >
                         <div class="web-preview-icon">
                           <svg
                             class="w-4 h-4"
@@ -415,7 +450,11 @@
                           <div class="web-preview-card-link">詳細を見る →</div>
                         </div>
                       </a>
-                      <a href="#project-custom" class="web-preview-card group">
+                      <a
+                        href="#project-custom"
+                        class="web-preview-card group"
+                        data-delay="2"
+                      >
                         <div class="web-preview-icon">
                           <svg
                             class="w-4 h-4"
@@ -444,10 +483,11 @@
                     </div>
                   </div>
 
-                  <p class="text-sub leading-relaxed">
-                    小規模事業者向けWebサイト制作。Vue.js と Tailwind CSS
-                    によるモダンな技術選定と、長期保守まで一貫してご対応。<br />大企業にはない柔軟さで、素早く・確実に形にします。
-                  </p>
+                  <div class="desc-animate desc-bullets" data-slide-idx="0">
+                    <span>・小規模事業者向け Web制作 / 構築</span>
+                    <span>・Vue.js + Tailwind CSS によるモダン実装</span>
+                    <span>・企画から長期保守まで一貫対応</span>
+                  </div>
                   <a href="#services" class="service-link">← Services</a>
                 </div>
               </div>
@@ -462,9 +502,28 @@
                     class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
                   >
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
-                      開発中のプロジェクト（ステルスモード）
+                      SaaS開発・運営
                     </h3>
-                    <span class="tag-badge">SaaS / 2026 Q3</span>
+                    <div class="flex items-center gap-2">
+                      <span class="tag-badge">SaaS / 2026 Q3</span>
+                      <button
+                        class="fs-btn"
+                        onclick="openFullscreen('project-saas')"
+                        aria-label="全画面表示"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                   <div class="saas-preview">
                     <!-- Left: Dashboard Wireframe -->
@@ -792,11 +851,10 @@
                       </div>
                     </div>
                   </div>
-                  <p class="text-sub leading-relaxed">
-                    現在、Felis Code では独自のバリデーション・ロジックを用いた
-                    B2B SaaS をステルス開発中です。<br />
-                    <br />
-                  </p>
+                  <div class="desc-animate desc-bullets" data-slide-idx="1">
+                    <span>・独自 B2B SaaS をステルス開発中</span>
+                    <span>・独自バリデーション・ロジック採用</span>
+                  </div>
                   <a href="#services" class="service-link">← Services</a>
                 </div>
                 　
@@ -814,7 +872,26 @@
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
                       オーダーメイド開発
                     </h3>
-                    <span class="tag-badge">Backend / Python</span>
+                    <div class="flex items-center gap-2">
+                      <span class="tag-badge">Backend / Python</span>
+                      <button
+                        class="fs-btn"
+                        onclick="openFullscreen('project-custom')"
+                        aria-label="全画面表示"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
 
                   <!-- Custom split: left value prop + right IDE typewriter -->
@@ -856,6 +933,11 @@
                         <span style="color: #a3e4b0">FastAPI</span>
                       </div>
                     </div>
+                  </div>
+                  <div class="desc-animate desc-bullets" data-slide-idx="2">
+                    <span>・Python / FastAPI によるバックエンド開発</span>
+                    <span>・AWS（ap-northeast-1）での安定運用</span>
+                    <span>・業務効率化ツールの設計から構築まで</span>
                   </div>
                   <a href="#services" class="service-link">← Services</a>
                 </div>
@@ -1095,6 +1177,24 @@
         ></path>
       </svg>
     </button>
+
+    <!-- ══ Fullscreen Modal ══ -->
+    <div
+      id="fsModal"
+      class="fs-modal"
+      onclick="if (event.target === this) closeFullscreen();"
+    >
+      <div class="fs-modal-inner">
+        <button
+          class="fs-modal-close"
+          onclick="closeFullscreen()"
+          aria-label="閉じる"
+        >
+          ✕
+        </button>
+        <div id="fsModalBody" class="fs-modal-body"></div>
+      </div>
+    </div>
 
     <script src="js/script.js"></script>
   </body>

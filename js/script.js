@@ -1,3 +1,44 @@
+// Web split: RUN / RESET toggle
+function toggleWebView(btn) {
+  const split = btn.closest(".web-split");
+  if (!split) return;
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    const isPreview = split.classList.toggle("show-preview");
+    split.classList.toggle("executed", isPreview);
+    btn.innerHTML = isPreview
+      ? '<span class="web-run-icon">‹/›</span> CODE'
+      : '<span class="web-run-icon">▶</span> RUN';
+  } else {
+    const isExecuted = split.classList.toggle("executed");
+    btn.innerHTML = isExecuted
+      ? '<span class="web-run-icon">■</span> RESET'
+      : '<span class="web-run-icon">▶</span> RUN';
+  }
+}
+
+// Fullscreen modal
+function openFullscreen(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  const modal = document.getElementById("fsModal");
+  const body  = document.getElementById("fsModalBody");
+  body.innerHTML = card.innerHTML;
+  // Mark IDE lines as revealed in modal (typewriter already ran)
+  body.querySelectorAll(".ide-line").forEach(l => l.classList.add("revealed"));
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeFullscreen() {
+  document.getElementById("fsModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeFullscreen();
+});
+
 function toggleMenu() {
   const menu    = document.getElementById("mobile-menu");
   const icon    = document.getElementById("ham-icon");
@@ -94,6 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const di = displayIdx();
       dots.forEach((d, i) => d.classList.toggle("active", i === di));
       if (counter) counter.textContent = `${di + 1} / ${REAL}`;
+      // Trigger description text animation for current slide
+      document.dispatchEvent(new CustomEvent("carouselSlide", { detail: { index: di } }));
     }
 
     function moveTo(newIdx) {
@@ -206,6 +249,26 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     obs.observe(body);
   })();
+
+  // Animate description text — reveal once on first view, then stay fixed
+  const descEls = document.querySelectorAll(".desc-animate");
+
+  function revealDescForSlide(idx) {
+    descEls.forEach((el) => {
+      if (+el.dataset.slideIdx === idx && !el.dataset.revealed) {
+        el.dataset.revealed = "1";
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => el.classList.add("desc-revealed"));
+        });
+      }
+    });
+  }
+
+  // Listen for slide changes
+  document.addEventListener("carouselSlide", (e) => revealDescForSlide(e.detail.index));
+
+  // Trigger immediately for slide 0 (listener registered after IIFE, so dispatch was missed)
+  revealDescForSlide(0);
 
   // Service → Project carousel navigation (anchor links inside carousel slides)
   const projectSlotMap = { "project-web": 0, "project-saas": 1, "project-custom": 2 };
