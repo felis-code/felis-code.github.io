@@ -953,20 +953,20 @@
             <button class="carousel-btn carousel-btn--next" aria-label="Next">
               &#8594;
             </button>
+            <!-- Dots: inside viewport, absolute at bottom -->
+            <div class="carousel-dots">
+              <button class="carousel-dot active" data-index="0"></button>
+              <button class="carousel-dot" data-index="1"></button>
+              <button class="carousel-dot" data-index="2"></button>
+            </div>
           </div>
           <!-- /.carousel-viewport -->
-          <!-- Dots -->
-          <div class="carousel-dots">
-            <button class="carousel-dot active" data-index="0"></button>
-            <button class="carousel-dot" data-index="1"></button>
-            <button class="carousel-dot" data-index="2"></button>
-          </div>
         </div>
         <!-- /.carousel-wrapper -->
       </section>
 
       <!-- ── CONTACT ── -->
-      <section id="contact" class="mb-32 scroll-mt-24 relative">
+      <section id="contact" class="mb-20 scroll-mt-24 relative">
         <div
           class="absolute -top-16 -right-16 w-80 h-80 rounded-full blur-[120px] pointer-events-none contact-glow-green"
         ></div>
@@ -978,7 +978,7 @@
           class="relative rounded-3xl p-[1px] overflow-hidden shadow-2xl contact-gradient-border"
         >
           <div
-            class="bg-[#1a1c1d]/96 backdrop-blur-2xl rounded-[23px] p-10 md:p-16 text-center text-white relative overflow-hidden"
+            class="bg-[#1a1c1d]/96 backdrop-blur-2xl rounded-[23px] p-8 md:p-12 text-center text-white relative overflow-hidden"
           >
             <!-- Dot grid texture -->
             <div
@@ -1005,13 +1005,13 @@
               </div>
 
               <h2
-                class="text-4xl md:text-5xl font-bold mb-8 leading-tight tracking-tighter bg-gradient-to-b from-white to-slate-300 bg-clip-text text-transparent"
+                class="text-3xl md:text-4xl font-bold mb-5 leading-tight tracking-tighter bg-gradient-to-b from-white to-slate-300 bg-clip-text text-transparent"
               >
                 Let's Build Your <span class="text-[#45b059]">Next Idea.</span>
               </h2>
 
               <p
-                class="text-base text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed opacity-90"
+                class="text-sm text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed opacity-95"
               >
                 Felis Code は、<span class="text-white font-bold"
                   >個人開発者</span
@@ -1023,7 +1023,7 @@
 
               <!-- Info cards -->
               <div
-                class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 text-left max-w-3xl mx-auto"
+                class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-left max-w-3xl mx-auto"
               >
                 <div
                   class="bg-[#373839]/40 p-5 rounded-2xl border border-[#373839]/60 hover:border-[#45b059]/50 transition-colors"
@@ -1080,7 +1080,7 @@
               </p>
 
               <p
-                class="text-[10px] mono text-slate-500 mt-6 uppercase tracking-widest"
+                class="text-[10px] mono text-slate-400 mt-4 uppercase tracking-widest"
               >
                 Direct Expert-to-Client &middot; No Middleman &middot; Full
                 Transparency

@@ -923,10 +923,15 @@ body {
 .light-theme .carousel-btn:hover { background: rgba(69, 176, 89, 0.12); }
 
 .carousel-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 1.5rem;
+  margin-top: 0;
 }
 .carousel-dot {
   width: 8px;
