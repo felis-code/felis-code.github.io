@@ -91,8 +91,8 @@
               id="headline"
               class="text-[2.6rem] md:text-[3.75rem] font-bold text-main mb-5 leading-[1.2] tracking-tight"
             >
-              <span class="text-brand -ml-2 md:-ml-3">「想い」</span
-              >を、<br />コードに。
+              ITで、<br />
+              <span class="text-brand">もっと自由</span>な時間を。
             </h1>
 
             <div class="flex items-center gap-3 mb-9">
@@ -113,8 +113,7 @@
             <p
               class="text-[0.95rem] md:text-base text-sub max-w-xl leading-[2] antialiased"
             >
-              あなたの<strong class="font-bold text-main">「作りたい」</strong
-              >に、<br class="md:hidden" />谁よりも丁寧に向き合いたい。
+             神戸を拠点とする個人IT開発スタジオです。Web制作から業務の自動化まで、あなたの「あったらいいな」を技術で形にします。
             </p>
           </div>
 
@@ -138,13 +137,14 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Web制作 ・ 構築 -->
           <div
-            class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group"
+            class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group h-full"
             data-animate
             data-delay="0s"
           >
+            <!-- Icon Section -->
             <div class="text-brand mb-5">
               <svg
-                class="w-10 h-10"
+                class="w-10 h-10 transition-transform duration-500 group-hover:scale-110"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -152,10 +152,8 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               >
-                <!-- browser frame -->
                 <rect x="2" y="3" width="20" height="15" rx="2" />
                 <line x1="2" y1="7.5" x2="22" y2="7.5" />
-                <!-- toolbar dots -->
                 <circle
                   cx="5"
                   cy="5.25"
@@ -170,32 +168,48 @@
                   fill="currentColor"
                   stroke="none"
                 />
-                <!-- code chevrons + slash -->
                 <path d="M8.5 11.5l-2 2 2 2M15.5 11.5l2 2-2 2M12.5 10.5l-1 5" />
-                <!-- stand -->
                 <path d="M8 21h8M12 18v3" />
               </svg>
             </div>
-            <h4 class="font-bold text-main text-[1.05rem] mb-1">
-              Web制作 ・ 構築
-            </h4>
-            <p class="text-[10px] mono text-brand tracking-widest mb-4">
-              Vue.js · Tailwind CSS
+
+            <!-- Title Section: 突出价值 -->
+            <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
+              集客に強いホームページ制作
+            </h5>
+
+            <p class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase">
+            WEB PRESENCE & DESIGN
             </p>
-            <p class="text-[13px] text-sub leading-[1.85] flex-1">
-              小規模事業者向けWebサイト制作。モダンな技術選定と保守。
-              「とりあえず作った」で終わらせません。長く使えるWebを構築します。
-            </p>
-            <a href="#project-web" class="service-link">
-              詳しく見る <span class="arrow">→</span>
+            <div class="text-[13px] text-sub leading-[1.8] flex-1">
+              <p class="mb-3">
+                「スマホで見やすく、検索に出る」のは当たり前。
+              </p>
+              <p class="mb-4 font-medium text-main">
+                あなたの商売の魅力が正しく伝わり、「ここにお願いしたい」と思われるホームページを制作します。
+              </p>
+              <ul class="space-y-1.5 text-brand font-bold">
+                <li>✓ 初めての方でも安心の丁寧なヒアリング</li>
+                <li>✓ 集客・予約につながる設計</li>
+                <li>✓ 自分で簡単に更新できる仕組み</li>
+              </ul>
+            </div>
+
+            <!-- Action Link -->
+            <a href="#project-web" class="service-link mt-6">
+              詳しく見る
+              <span
+                class="arrow inline-block transition-transform group-hover:translate-x-1"
+                >→</span
+              >
             </a>
           </div>
 
           <!-- SaaS開発・運営 -->
           <div
-            class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group"
+            class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group h-full"
             data-animate
-            data-delay="0.2s"
+            data-delay="0.1s"
           >
             <div class="text-brand mb-5">
               <svg
@@ -213,24 +227,42 @@
                 <path d="M2 17l10 5 10-5" />
               </svg>
             </div>
-            <h4 class="font-bold text-main text-[1.05rem] mb-1">
-              SaaS開発・運営
-            </h4>
-            <p class="text-[10px] mono text-brand tracking-widest mb-4">
-              FastAPI · PostgreSQL · AWS
+            <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
+              現場に寄り添う、自社システムの開発
+            </h5>
+            <p
+              class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase"
+            >
+              Stealth Mode / Product R&D
             </p>
-            <p class="text-[13px] text-sub leading-[1.85] flex-1">
-              ブラウザで使える「自分専用のシステム」を構築します。
-              開発だけでなく、サーバー管理や日々の改善まで責任を持って支え続けます。
-            </p>
-            <a href="#project-saas" class="service-link">
-              詳しく見る <span class="arrow">→</span>
+            <div class="text-[13px] text-sub leading-[1.8] flex-1">
+              <p class="mb-3 font-medium text-main">
+                現在、特定の業界向けに高度な自動最適化エンジンを搭載したSaaSをステルス開発中。
+              </p>
+              <p class="mb-4">
+                膨大なデータと複雑なルールを瞬時に処理する、難易度の高いプロダクトに挑戦しています。
+              </p>
+              <p class="text-[11px] text-sub/60 italic mb-4 leading-relaxed">
+                ※守秘義務の関係上、業界の詳細については個別にお問い合わせください。
+              </p>
+              <ul class="space-y-1.5 text-brand font-bold">
+                <li>✓ 1000通り以上の組み合わせを瞬時に計算</li>
+                <li>✓ 現場の「職人技」をデジタルへ昇華</li>
+              </ul>
+            </div>
+            <a href="#project-saas" class="service-link mt-6">
+              技術力を詳しく聞く
+              <span
+                class="arrow inline-block transition-transform group-hover:translate-x-1"
+                >→</span
+              >
             </a>
           </div>
 
+          
           <!-- オーダーメイド開発 -->
           <div
-            class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group"
+            class="hover-card p-7 md:p-8 rounded-2xl flex flex-col group h-full"
             data-animate
             data-delay="0.2s"
           >
@@ -250,22 +282,28 @@
                 />
               </svg>
             </div>
-            <h4 class="font-bold text-main text-[1.05rem] mb-1">
-              オーダーメイド開発
-            </h4>
-            <p class="text-[10px] mono text-brand tracking-widest mb-4">
-              Full-Stack · Python · Vue
+            <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
+              「自分専用のツール」を特注で作る
+            </h5>
+            <p class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase">
+              CUSTOM-BUILT SOLUTIONS
             </p>
-            <p class="text-[13px] text-sub leading-[1.85] flex-1">
-              その手作業、自動化しませんか？<br />
-              既製品では届かない「あと一歩」を、専用設計で形に。
-              汎用ツールでは解決できない課題を、一からの開発で解消します。
-            </p>
-            <a href="#project-custom" class="service-link">
+            <div class="text-[13px] text-sub leading-[1.8] flex-1">
+              <p class="mb-3">
+                「エクセルでの管理が限界」「市販のソフトが使いにくい」。
+              </p>
+              <p class="mb-4 font-medium text-main">
+                そんなあなただけの「困った」を解決する専用ツールを、ゼロから作ります。個人開発者ならではの柔軟さで、小さな相談から丁寧に対応します。
+              </p>
+              <ul class="space-y-1.5 text-brand font-bold">
+                <li>✓ 100%あなたの業務に合わせた機能</li>
+                <li>✓ 相談・お見積もりは無料</li>
+              </ul>
+            </div>
+            <a href="#project-custom" class="service-link mt-6">
               詳しく見る <span class="arrow">→</span>
             </a>
           </div>
-        </div>
       </section>
 
       <!-- ── PROJECTS ── -->
