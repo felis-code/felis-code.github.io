@@ -92,6 +92,22 @@ const fadeObserver = new IntersectionObserver(
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-animate]").forEach((el) => fadeObserver.observe(el));
 
+  // Progress rings: animate stroke-dashoffset when scrolled into view
+  const rings = document.querySelectorAll(".progress-ring");
+  if (rings.length) {
+    const ringObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.style.strokeDashoffset = entry.target.dataset.offset;
+          ringObs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    rings.forEach((r) => ringObs.observe(r));
+  }
+
   // Strip HTML indentation from whitespace-pre (fixes visual left-indent caused by HTML formatting)
   document.querySelectorAll(".code-animate .whitespace-pre").forEach((pre) => {
     const tw = document.createTreeWalker(pre, NodeFilter.SHOW_TEXT);

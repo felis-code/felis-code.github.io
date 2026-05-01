@@ -115,7 +115,18 @@
             >
              神戸を拠点とする個人IT開発スタジオです。Web制作から業務の自動化まで、あなたの「あったらいいな」を技術で形にします。
             </p>
+            <div class="mt-10 flex flex-wrap gap-4" data-animate data-delay="0.6s">
+          <!-- 主 CTA：引导咨询 -->
+          <a 
+            href="#contact" 
+            class="px-8 py-3.5 bg-brand text-white rounded-full font-bold text-[14px] transition-all duration-300 hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 group"
+          >
+            無料で相談してみる           
+          </a>
+ 
+        </div>
           </div>
+          
 
           <div class="flex-shrink-0 order-1 md:order-2 hero-logo-wrap">
             <img
@@ -175,7 +186,7 @@
 
             <!-- Title Section: 突出价值 -->
             <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
-              集客に強いホームページ制作
+              ホームページ制作
             </h5>
 
             <p class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase">
@@ -228,7 +239,7 @@
               </svg>
             </div>
             <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
-              現場に寄り添う、自社システムの開発
+              自社システムの開発
             </h5>
             <p
               class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase"
@@ -236,19 +247,62 @@
               Stealth Mode / Product R&D
             </p>
             <div class="text-[13px] text-sub leading-[1.8] flex-1">
-              <p class="mb-3 font-medium text-main">
-                現在、特定の業界向けに高度な自動最適化エンジンを搭載したSaaSをステルス開発中。
-              </p>
+              <!-- <p class="mb-3 font-medium text-main">
+               
+              </p> -->
               <p class="mb-4">
-                膨大なデータと複雑なルールを瞬時に処理する、難易度の高いプロダクトに挑戦しています。
+                現在、特定の業界向けに高度な自動最適化エンジンを搭載した難易度の高いプロダクトSaaSをステルス開発中。
               </p>
               <p class="text-[11px] text-sub/60 italic mb-4 leading-relaxed">
                 ※守秘義務の関係上、業界の詳細については個別にお問い合わせください。
               </p>
-              <ul class="space-y-1.5 text-brand font-bold">
+              <ul class="space-y-1.5 text-brand font-bold mb-0">
                 <li>✓ 1000通り以上の組み合わせを瞬時に計算</li>
                 <li>✓ 現場の「職人技」をデジタルへ昇華</li>
               </ul>
+
+              <!-- 開発進捗リング -->
+              <div class="mt-6 pt-5 border-t border-current/10">
+                <p class="text-[10px] mono text-sub/50 mb-4 tracking-widest uppercase">Development Progress</p>
+                <div class="grid grid-cols-3 gap-3" id="progressRings">
+                  <div class="flex flex-col items-center gap-1.5">
+                    <div class="relative w-11 h-11">
+                      <svg class="w-full h-full -rotate-90" viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent" class="text-current opacity-10" />
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent"
+                          stroke-dasharray="125.6" stroke-dashoffset="125.6"
+                          class="text-brand transition-all duration-1000 ease-out progress-ring" data-offset="12.5" />
+                      </svg>
+                      <span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-main">90%</span>
+                    </div>
+                    <span class="text-[8.5px] text-sub/70 mono">Logic</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-1.5">
+                    <div class="relative w-11 h-11">
+                      <svg class="w-full h-full -rotate-90" viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent" class="text-current opacity-10" />
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent"
+                          stroke-dasharray="125.6" stroke-dashoffset="125.6"
+                          class="text-brand/70 transition-all duration-1000 ease-out progress-ring" data-offset="18.8" />
+                      </svg>
+                      <span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-main">85%</span>
+                    </div>
+                    <span class="text-[8.5px] text-sub/70 mono">Security</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-1.5">
+                    <div class="relative w-11 h-11">
+                      <svg class="w-full h-full -rotate-90" viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent" class="text-current opacity-10" />
+                        <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent"
+                          stroke-dasharray="125.6" stroke-dashoffset="125.6"
+                          class="text-brand/50 transition-all duration-1000 ease-out progress-ring" data-offset="37.6" />
+                      </svg>
+                      <span class="absolute inset-0 flex items-center justify-center text-[9px] font-bold text-main">70%</span>
+                    </div>
+                    <span class="text-[8.5px] text-sub/70 mono">Kiosk UI</span>
+                  </div>
+                </div>
+              </div>
             </div>
             <a href="#project-saas" class="service-link mt-6">
               技術力を詳しく聞く
@@ -283,7 +337,7 @@
               </svg>
             </div>
             <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
-              「自分専用のツール」を特注で作る
+              「自分専用のツール」を特注
             </h5>
             <p class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase">
               CUSTOM-BUILT SOLUTIONS
@@ -751,7 +805,7 @@
               </div>
               <!-- /.carousel-slide -->
               <div class="carousel-slide">
-                <!-- Card: SaaS保育園 -->
+                <!-- Card: SaaS -->
                 <div
                   id="project-saas"
                   class="hover-card p-8 md:p-10 rounded-2xl scroll-mt-24"
@@ -783,6 +837,8 @@
                       </button>
                     </div>
                   </div>
+                  
+                  
                   <div class="saas-preview">
                     <!-- Left: Dashboard Wireframe -->
                     <div class="saas-left">
@@ -1071,6 +1127,7 @@
                           fill-opacity="0.22"
                         />
                       </svg>
+                      
                     </div>
                     <!-- Right: Tech Stack -->
                     <div class="saas-right">
@@ -1098,6 +1155,7 @@
                           ※守秘義務の関係上、業界の詳細については個別にお問い合わせください。
                         </p>
                       </div>
+                      
                       <div class="saas-divider">
                         <span class="saas-label">Release Target</span>
                         <p class="saas-release-date">2026 Q3</p>
@@ -1107,6 +1165,7 @@
                       </div>
                     </div>
                   </div>
+                  
                   <div class="desc-animate desc-bullets" data-slide-idx="1">
                     <span>・独自 B2B SaaS を開発中</span>
                     <span>・独自バリデーション・ロジック採用</span>
