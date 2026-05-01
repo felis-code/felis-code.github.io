@@ -87,15 +87,15 @@
           class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16"
         >
           <div class="flex-1 order-2 md:order-1">
-            <h1
-              id="headline"
-              class="text-[2.6rem] md:text-[3.75rem] font-bold text-main mb-5 leading-[1.2] tracking-tight"
-            >
+           <h1 class="text-[2.8rem] md:text-[4.5rem] font-extrabold text-main mb-6 leading-[1.15] tracking-tight">
               ITで、<br />
-              <span class="text-brand">もっと自由</span>な時間を。
+              <span class="relative">
+                <span class="text-brand">もっと自由</span>
+                <!-- 装饰性下划线，呼应流光画布的色彩 -->
+                <span class="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-brand/40 to-transparent rounded-full"></span>
+              </span>
             </h1>
-
-            <div class="flex items-center gap-3 mb-9">
+            <div class="flex items-center gap-3 mb-9"> 
               <span
                 class="mono font-bold tracking-[0.15em] text-main text-sm md:text-base"
                 >Felis Code</span
@@ -192,16 +192,14 @@
             <p class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase">
             WEB PRESENCE & DESIGN
             </p>
-            <div class="text-[13px] text-sub leading-[1.8] flex-1">
-              <p class="mb-3">
-                「スマホで見やすく、検索に出る」のは当たり前。
-              </p>
-              <p class="mb-4 font-medium text-main">
-                あなたの商売の魅力が正しく伝わり、「ここにお願いしたい」と思われるホームページを制作します。
+            <div class="text-[13px] text-sub leading-[1.8] flex-1">     
+              <p class="mb-4 font-medium text-main">  
+                「ホームページ、そろそろ作らないとな…」とお悩みではありませんか？           
+               スマホで見やすく、検索に出る、きれいなサイトをお作りします。
               </p>
               <ul class="space-y-1.5 text-brand font-bold">
                 <li>✓ 初めてでも安心の相談対応</li>
-                <li>✓ 集客・予約につながる設計</li>
+                <li>✓ スマホ対応は標準装備</li>
                 <li>✓ 自分で簡単に更新できる仕組み</li>
               </ul>
                  <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center">
@@ -251,7 +249,7 @@
   <div class="mt-5 flex justify-between w-full px-2 text-[9px] font-bold tracking-tight">
     <span class="text-brand/90">#価値を伝える設計</span> 
     <span class="text-cyan-500/80">#洗練されたUI</span>
-    <span class="text-indigo-400/80">#圧倒的なスピード</span>
+    <span class="text-indigo-400/80">#スピード</span>
   </div>
 </div>
               
@@ -311,7 +309,8 @@
                 ※守秘義務の関係上、業界の詳細については個別にお問い合わせください。
               </p>
               <ul class="space-y-1.5 text-brand font-bold mb-0">
-                <li>✓ 1000通り以上の組み合わせを瞬時に計算</li>
+                <li>✓ 1000通り以上の組合わせを瞬時計算</li>
+                <li>✓  独自バリデーション・ロジック</li>              
                 <li>✓ 現場の「職人技」をデジタルへ昇華</li>
               </ul>
 
@@ -391,7 +390,7 @@
               </svg>
             </div>
             <h5 class="font-bold text-main text-[1.1rem] mb-1 tracking-tight">
-              「自分専用のツール」を特注
+              自分専用のツール開発
             </h5>
             <p class="text-[10px] mono text-brand/70 tracking-widest mb-5 uppercase">
               CUSTOM-BUILT SOLUTIONS
@@ -408,12 +407,49 @@
                 <li>✓ Excel管理からのスムーズな脱却</li>
                 <li>✓ 相談・お見積もりは無料</li>
               </ul>
-              <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center ">
+
+              <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center group">
+  <!-- 标题动态化：增加微光效果 -->
+  <p class="text-[10px] mono text-sub/50 mb-6 tracking-widest uppercase text-center w-full group-hover:text-brand transition-colors duration-500">
+    System Deep Scan
+  </p>
+
+  <div class="relative flex items-center justify-center w-32 h-24">
+    <!-- 背景光晕：增加环境色 -->
+    <div class="absolute w-20 h-20 bg-brand/5 blur-2xl rounded-full"></div>
+
+    <!-- 扫描圆环容器 -->
+    <div class="relative w-20 h-20 rounded-full border border-brand/10 flex items-center justify-center overflow-hidden">
+      <!-- 动态扫描线：旋转的角渐变 -->
+      <div class="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_70%,rgba(69,176,89,0.3)_100%)] animate-[spin_3s_linear_infinite]"></div>
+      
+      <!-- 核心点：多层发光 -->
+      <div class="relative w-2 h-2 bg-brand rounded-full shadow-[0_0_12px_rgba(69,176,89,0.8)] z-10"></div>
+    </div>
+
+    <!-- 多重彩色扩散脉冲 -->
+    <!-- 第一层：品牌绿 -->
+    <div class="absolute w-12 h-12 border border-brand/20 rounded-full animate-[ping_3s_linear_infinite]"></div>
+    <!-- 第二层：青色（增加色彩丰富度） -->
+    <div class="absolute w-20 h-20 border border-cyan-400/10 rounded-full animate-[ping_2.5s_linear_infinite_0.5s]"></div>
+    <!-- 第三层：靛蓝色（增加深邃感） -->
+    <div class="absolute w-28 h-28 border border-indigo-500/5 rounded-full animate-[ping_4s_linear_infinite_1s]"></div>
+  </div>
+
+  <!-- 底部标签：增加彩色背景 -->
+  <div class="flex gap-3 mt-4">
+    <span class="px-2 py-0.5 bg-brand/5 text-brand text-[9px] mono rounded-full border border-brand/10 italic">#Efficiency</span>
+    <span class="px-2 py-0.5 bg-cyan-400/5 text-cyan-600 text-[9px] mono rounded-full border border-cyan-400/10 italic">#Responsive</span>
+    <span class="px-2 py-0.5 bg-indigo-500/5 text-indigo-600 text-[9px] mono rounded-full border border-indigo-500/10 italic">#Fast</span>
+  </div>
+</div>
+
+      <!--         <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center ">
               <p class="text-[10px] mono text-sub/50 mb-6 tracking-widest uppercase text-center w-full ">Deep Scan</p>
               <div class="relative flex items-center justify-center w-24 h-16">
-                <!-- 核心点 -->
+                
                 <div class="w-2 h-2 bg-brand rounded-full relative z-10"></div>
-                <!-- 扩散脉冲 -->
+                
                 <div class="absolute w-4 h-4 bg-brand/20 rounded-full animate-[ping_3s_linear_infinite]"></div>
                 <div class="absolute w-12 h-12 border border-brand/10 rounded-full animate-[ping_2.5s_linear_infinite]"></div>
                 <div class="absolute w-20 h-20 border border-brand/5 rounded-full animate-[ping_2s_linear_infinite]"></div>
@@ -423,7 +459,7 @@
                 <span class="text-[9px] mono text-brand/60 italic">#Responsive</span>
                 <span class="text-[9px] mono text-brand/60 italic">#Fast</span>
               </div>
-</div>
+</div> -->
             </div>
             <a href="#project-custom" class="service-link mt-6">
               詳しく見る <span class="arrow">→</span>
@@ -457,7 +493,7 @@
                     class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
                   >
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
-                      Webサイト制作
+                      ホームページ制作
                     </h3>
                     <div class="flex items-center gap-2">
                       <span class="tag-badge">Web / Frontend</span>
@@ -778,7 +814,7 @@
                               </svg>
                             </div>
                             <div class="gc-body">
-                              <div class="gc-title">Webサイト制作</div>
+                              <div class="gc-title">ホームページ制作</div>
                               <div class="gc-sub">Vue.js · Tailwind</div>
                             </div>
                             <span class="gc-arrow">→</span>
@@ -864,7 +900,7 @@
                       >・専門知識は一切不要。企画から公開後の管理まで一括サポート。</span
                     >
                     <span
-                      >・スマホ対応・最新デザインを短期間で。個人店でも安心価格。</span
+                      >・スマホ対応デザインを短期間で。個人店でも安心価格。</span
                     >
                     <span
                       >・公開後も徹底サポート。お気軽にご相談ください。</span
@@ -885,7 +921,7 @@
                     class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
                   >
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
-                      SaaS開発・運営
+                     自社システムの開発
                     </h3>
                     <div class="flex items-center gap-2">
                       <span class="tag-badge">SaaS / 2026 Q3</span>
@@ -1256,7 +1292,7 @@
                     class="flex flex-col md:flex-row justify-between items-start gap-4 mb-8"
                   >
                     <h3 class="text-2xl md:text-3xl font-bold text-main">
-                      オーダーメイド開発
+                      自分専用のツール開発
                     </h3>
                     <div class="flex items-center gap-2">
                       <span class="tag-badge">Backend / Python</span>
